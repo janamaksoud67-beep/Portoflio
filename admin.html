@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - موقعي الشخصي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3a86ff;
+            --secondary-color: #8338ec;
+            --accent-color: #06d6a0;
+            --dark-color: #212529;
+            --light-color: #f8f9fa;
+            --danger-color: #ef476f;
+            --warning-color: #ffd166;
+            --gray-color: #6c757d;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* لوحة التحكم */
+        .admin-panel {
+            width: 280px;
+            background: linear-gradient(135deg, var(--dark-color), #343a40);
+            color: white;
+            padding: 20px 0;
+            transition: var(--transition);
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .admin-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-header h2 {
+            margin-bottom: 10px;
+        }
+
+        .admin-header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .admin-nav ul {
+            list-style: none;
+        }
+
+        .admin-nav li {
+            margin-bottom: 5px;
+        }
+
+        .admin-nav a {
+            display: block;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            padding: 12px 20px;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+        }
+
+        .admin-nav a:hover, .admin-nav a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .admin-nav i {
+            margin-left: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* محتوى لوحة التحكم */
+        .admin-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .admin-header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .admin-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .admin-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* التبويبات */
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab {
+            padding: 12px 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab.active {
+            border-bottom: 3px solid var(--primary-color);
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* الأقسام */
+        .section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .btn:hover {
+            background-color: #2a75f0;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #7329d6;
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+        }
+
+        .btn-danger:hover {
+            background-color: #e03562;
+        }
+
+        .btn-sm {
+            padding: 5px 10px;
+            font-size: 0.8rem;
+        }
+
+        /* النماذج */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* الإحصائيات */
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .stat-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .stat-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .stat-card p {
+            color: var(--gray-color);
+        }
+
+        /* العناصر القابلة للسحب */
+        .sortable-list {
+            list-style: none;
+        }
+
+        .sortable-item {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: move;
+        }
+
+        .sortable-item:hover {
+            background-color: #e9ecef;
+        }
+
+        .item-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* التجاوب */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .admin-panel {
+                width: 100%;
+                height: auto;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab {
+                flex: 1;
+                text-align: center;
+                padding: 10px 15px;
+            }
+            
+            .admin-header-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- لوحة التحكم -->
+        <div class="admin-panel">
+            <div class="admin-header">
+                <h2><i class="fas fa-cogs"></i> لوحة التحكم</h2>
+                <p>موقعي الشخصي</p>
+            </div>
+            <nav class="admin-nav">
+                <ul>
+                    <li><a href="#" class="active" data-tab="dashboard"><i class="fas fa-tachometer-alt"></i> لوحة التحكم</a></li>
+                    <li><a href="#" data-tab="hero"><i class="fas fa-home"></i> قسم البطل</a></li>
+                    <li><a href="#" data-tab="stats"><i class="fas fa-chart-bar"></i> الإحصائيات</a></li>
+                    <li><a href="#" data-tab="about"><i class="fas fa-user"></i> عني</a></li>
+                    <li><a href="#" data-tab="projects"><i class="fas fa-briefcase"></i> المشاريع</a></li>
+                    <li><a href="#" data-tab="skills"><i class="fas fa-code"></i> المهارات</a></li>
+                    <li><a href="#" data-tab="contact"><i class="fas fa-envelope"></i> التواصل</a></li>
+                    <li><a href="#" data-tab="seo"><i class="fas fa-search"></i> إعدادات SEO</a></li>
+                    <li><a href="#" data-tab="analytics"><i class="fas fa-chart-line"></i> إحصائيات الزوار</a></li>
+                    <li><a href="#" data-tab="design"><i class="fas fa-palette"></i> إعدادات التصميم</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- محتوى لوحة التحكم -->
+        <div class="admin-content">
+            <div class="admin-header-bar">
+                <h1 class="admin-title" id="admin-page-title">لوحة التحكم</h1>
+                <div class="admin-actions">
+                    <button class="btn" id="save-all">حفظ جميع التغييرات</button>
+                    <button class="btn btn-secondary" id="preview-site">معاينة الموقع</button>
+                    <button class="btn btn-danger" id="logout">تسجيل الخروج</button>
+                </div>
+            </div>
+
+            <!-- تبويبات المحتوى -->
+            <div class="tabs">
+                <div class="tab active" data-tab="dashboard">لوحة التحكم</div>
+                <div class="tab" data-tab="hero">قسم البطل</div>
+                <div class="tab" data-tab="stats">الإحصائيات</div>
+                <div class="tab" data-tab="about">عني</div>
+                <div class="tab" data-tab="projects">المشاريع</div>
+                <div class="tab" data-tab="skills">المهارات</div>
+                <div class="tab" data-tab="contact">التواصل</div>
+                <div class="tab" data-tab="seo">إعدادات SEO</div>
+                <div class="tab" data-tab="analytics">إحصائيات الزوار</div>
+                <div class="tab" data-tab="design">إعدادات التصميم</div>
+            </div>
+
+            <!-- محتوى التبويبات -->
+            <div id="dashboard-tab" class="tab-content active">
+                <div class="stats-overview">
+                    <div class="stat-card">
+                        <i class="fas fa-eye"></i>
+                        <h3>1,245</h3>
+                        <p>زيارات اليوم</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <h3>8,752</h3>
+                        <p>إجمالي الزيارات</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-briefcase"></i>
+                        <h3>12</h3>
+                        <p>المشاريع المنشورة</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-envelope"></i>
+                        <h3>24</h3>
+                        <p>رسائل التواصل</p>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">آخر النشاطات</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <p><strong>تم تحديث قسم البطل</strong> - منذ 2 ساعة</p>
+                        </div>
+                        <div class="activity-item">
+                            <p><strong>تم إضافة مشروع جديد</strong> - منذ 5 ساعات</p>
+                        </div>
+                        <div class="activity-item">
+                            <p><strong>تم تحديث معلومات التواصل</strong> - منذ يوم</p>
+                        </div>
+                        <div class="activity-item">
+                            <p><strong>تم تغيير السيرة الذاتية</strong> - منذ يومين</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="hero-tab" class="tab-content">
+                <div class="section">
+                    <h3 class="section-title">قسم البطل</h3>
+                    <div class="form-group">
+                        <label class="form-label">الصورة الشخصية</label>
+                        <input type="file" class="form-control" id="hero-image" accept="image/*">
+                        <small>الحجم الموصى به: 200x200 بكسل</small>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">العنوان الرئيسي</label>
+                        <input type="text" class="form-control" id="hero-title" value="مستشار استراتيجي وشغوف بالابتكار">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">العنوان الفرعي</label>
+                        <textarea class="form-control" id="hero-subtitle">أعمل على تحويل الأفكار إلى حلول رقمية مبتكرة</textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">نص زر الدعوة للعمل</label>
+                            <input type="text" class="form-control" id="hero-cta-text" value="تصفح مشاريعي">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">رابط زر الدعوة للعمل</label>
+                            <input type="text" class="form-control" id="hero-cta-link" value="#projects">
+                        </div>
+                    </div>
+                    <button class="btn" id="save-hero">حفظ التغييرات</button>
+                </div>
+            </div>
+
+            <div id="stats-tab" class="tab-content">
+                <div class="section">
+                    <div class="section-header">
+                        <h3 class="section-title">الإحصائيات والأرقام</h3>
+                        <button class="btn" id="add-stat">إضافة إحصائية</button>
+                    </div>
+                    <div id="stats-list">
+                        <!-- سيتم إضافة الإحصائيات ديناميكياً -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="about-tab" class="tab-content">
+                <div class="section">
+                    <h3 class="section-title">قسم عني</h3>
+                    <div class="form-group">
+                        <label class="form-label">النص التعريفي</label>
+                        <textarea class="form-control" id="about-text" rows="6">مطور ويب ومصمم واجهات مستخدم بخبرة تزيد عن 5 سنوات. متخصص في إنشاء تطبيقات ويب تفاعلية باستخدام أحدث التقنيات. شغوف بتحويل الأفكار الإبداعية إلى واقع رقمي ملموس.</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">السيرة الذاتية (PDF)</label>
+                        <input type="file" class="form-control" id="cv-file" accept=".pdf">
+                        <small>يمكنك تحميل ملف PDF جديد ليتم تحديثه تلقائياً</small>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">صورة قسم عني</label>
+                        <input type="file" class="form-control" id="about-image" accept="image/*">
+                        <small>الحجم الموصى به: 500x400 بكسل</small>
+                    </div>
+                    <button class="btn" id="save-about">حفظ التغييرات</button>
+                </div>
+            </div>
+
+            <div id="projects-tab" class="tab-content">
+                <div class="section">
+                    <div class="section-header">
+                        <h3 class="section-title">المشاريع</h3>
+                        <button class="btn" id="add-project">إضافة مشروع</button>
+                    </div>
+                    <div id="projects-list">
+                        <!-- سيتم إضافة المشاريع ديناميكياً -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="skills-tab" class="tab-content">
+                <div class="section">
+                    <div class="section-header">
+                        <h3 class="section-title">المهارات</h3>
+                        <button class="btn" id="add-category">إضافة فئة</button>
+                    </div>
+                    <div id="skills-list">
+                        <!-- سيتم إضافة المهارات ديناميكياً -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="contact-tab" class="tab-content">
+                <div class="section">
+                    <h3 class="section-title">معلومات التواصل</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">البريد الإلكتروني</label>
+                            <input type="email" class="form-control" id="contact-email" value="example@domain.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">رقم الهاتف</label>
+                            <input type="text" class="form-control" id="contact-phone" value="+966 50 123 4567">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">العنوان</label>
+                        <input type="text" class="form-control" id="contact-location" value="الرياض، المملكة العربية السعودية">
+                    </div>
+                    
+                    <div class="section-header" style="margin-top: 40px;">
+                        <h3 class="section-title">روابط التواصل الاجتماعي</h3>
+                        <button class="btn" id="add-social">إضافة رابط</button>
+                    </div>
+                    <div id="social-links-list">
+                        <!-- سيتم إضافة روابط التواصل ديناميكياً -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="seo-tab" class="tab-content">
+                <div class="section">
+                    <h3 class="section-title">إعدادات SEO</h3>
+                    <div class="form-group">
+                        <label class="form-label">عنوان الموقع</label>
+                        <input type="text" class="form-control" id="site-title" value="أحمد السعدي - مطور ويب محترف">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">وصف الموقع</label>
+                        <textarea class="form-control" id="site-description" rows="4">موقع شخصي احترافي يعرض مهاراتي وخبراتي في تطوير الويب وتصميم واجهات المستخدم</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">كلمات المفتاحية</label>
+                        <input type="text" class="form-control" id="site-keywords" value="مطور ويب, تصميم مواقع, برمجة, واجهات مستخدم">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">صورة المشاركة الاجتماعية</label>
+                        <input type="file" class="form-control" id="social-image" accept="image/*">
+                        <small>الحجم الموصى به: 1200x630 بكسل</small>
+                    </div>
+                    <button class="btn" id="save-seo">حفظ إعدادات SEO</button>
+                </div>
+            </div>
+
+            <div id="analytics-tab" class="tab-content">
+                <div class="section">
+                    <h3 class="section-title">إحصائيات الزوار</h3>
+                    <div class="analytics-chart">
+                        <div style="background-color: #f8f9fa; padding: 30px; border-radius: 10px; text-align: center;">
+                            <h4>رسم بياني لإحصائيات الزوار</h4>
+                            <p style="color: var(--gray-color); margin-top: 10px;">سيتم دمج مخططات إحصائيات الزوار هنا</p>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 30px;">
+                        <label class="form-label">رمز تتبع Google Analytics</label>
+                        <input type="text" class="form-control" id="ga-tracking" placeholder="أدخل رمز التتبع الخاص بك">
+                    </div>
+                    <button class="btn" id="save-analytics">حفظ إعدادات التحليلات</button>
+                </div>
+            </div>
+
+            <div id="design-tab" class="tab-content">
+                <div class="section">
+                    <h3 class="section-title">إعدادات التصميم</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">اللون الأساسي</label>
+                            <input type="color" class="form-control" id="primary-color" value="#3a86ff">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">اللون الثانوي</label>
+                            <input type="color" class="form-control" id="secondary-color" value="#8338ec">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">لون التمييز</label>
+                            <input type="color" class="form-control" id="accent-color" value="#06d6a0">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">لون النص</label>
+                            <input type="color" class="form-control" id="text-color" value="#212529">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">خط النص</label>
+                        <select class="form-control" id="font-family">
+                            <option value="'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Segoe UI (افتراضي)</option>
+                            <option value="'Cairo', sans-serif">Cairo</option>
+                            <option value="'Tajawal', sans-serif">Tajawal</option>
+                            <option value="Arial, sans-serif">Arial</option>
+                            <option value="'Helvetica Neue', Helvetica, sans-serif">Helvetica</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">نمط التصميم</label>
+                        <select class="form-control" id="design-style">
+                            <option value="modern">حديث</option>
+                            <option value="minimal">بسيط</option>
+                            <option value="corporate">احترافي</option>
+                            <option value="creative">إبداعي</option>
+                        </select>
+                    </div>
+                    <button class="btn" id="save-design">حفظ إعدادات التصميم</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // بيانات الموقع (محاكاة لقاعدة البيانات)
+        let siteData = {
+            hero: {
+                title: "مستشار استراتيجي وشغوف بالابتكار",
+                subtitle: "أعمل على تحويل الأفكار إلى حلول رقمية مبتكرة",
+                ctaText: "تصفح مشاريعي",
+                ctaLink: "#projects",
+                image: "https://via.placeholder.com/200"
+            },
+            stats: [
+                { id: 1, number: "5+", title: "سنوات خبرة" },
+                { id: 2, number: "20+", title: "مشروعاً منجزاً" },
+                { id: 3, number: "15+", title: "عميل راضٍ" },
+                { id: 4, number: "10+", title: "جائزة وتقدير" }
+            ],
+            about: {
+                text: "مطور ويب ومصمم واجهات مستخدم بخبرة تزيد عن 5 سنوات. متخصص في إنشاء تطبيقات ويب تفاعلية باستخدام أحدث التقنيات. شغوف بتحويل الأفكار الإبداعية إلى واقع رقمي ملموس.",
+                cv: "cv.pdf",
+                image: "https://via.placeholder.com/500x400"
+            },
+            projects: [
+                {
+                    id: 1,
+                    title: "منصة تعليمية تفاعلية",
+                    description: "منصة تعليمية متكاملة توفر تجربة تعلم تفاعلية مع أدوات تقييم متقدمة.",
+                    image: "https://via.placeholder.com/350x220",
+                    tags: ["React", "Node.js", "MongoDB"],
+                    link: "#",
+                    github: "#"
+                },
+                {
+                    id: 2,
+                    title: "تطبيق إدارة المهام",
+                    description: "تطبيق ويب لإدارة المهام الشخصية والمشاريع مع ميزات متقدمة للتخطيط والمتابعة.",
+                    image: "https://via.placeholder.com/350x220",
+                    tags: ["Vue.js", "Firebase", "CSS3"],
+                    link: "#",
+                    github: "#"
+                }
+            ],
+            skills: [
+                {
+                    id: 1,
+                    category: "تطوير الواجهات الأمامية",
+                    items: [
+                        { id: 1, name: "HTML/CSS", level: 95 },
+                        { id: 2, name: "JavaScript", level: 90 },
+                        { id: 3, name: "React", level: 85 },
+                        { id: 4, name: "Vue.js", level: 80 }
+                    ]
+                },
+                {
+                    id: 2,
+                    category: "تطوير الواجهات الخلفية",
+                    items: [
+                        { id: 5, name: "Node.js", level: 85 },
+                        { id: 6, name: "PHP", level: 75 },
+                        { id: 7, name: "Python", level: 70 },
+                        { id: 8, name: "MySQL", level: 80 }
+                    ]
+                }
+            ],
+            contact: {
+                email: "example@domain.com",
+                phone: "+966 50 123 4567",
+                location: "الرياض، المملكة العربية السعودية",
+                socialLinks: [
+                    { id: 1, name: "LinkedIn", url: "#", icon: "fab fa-linkedin" },
+                    { id: 2, name: "GitHub", url: "#", icon: "fab fa-github" },
+                    { id: 3, name: "Twitter", url: "#", icon: "fab fa-twitter" }
+                ]
+            },
+            seo: {
+                title: "أحمد السعدي - مطور ويب محترف",
+                description: "موقع شخصي احترافي يعرض مهاراتي وخبراتي في تطوير الويب وتصميم واجهات المستخدم",
+                keywords: "مطور ويب, تصميم مواقع, برمجة, واجهات مستخدم",
+                socialImage: "https://via.placeholder.com/1200x630"
+            },
+            design: {
+                primaryColor: "#3a86ff",
+                secondaryColor: "#8338ec",
+                accentColor: "#06d6a0",
+                textColor: "#212529",
+                fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+                designStyle: "modern"
+            }
+        };
+
+        // تهيئة لوحة التحكم
+        document.addEventListener('DOMContentLoaded', function() {
+            // تحميل البيانات الأولية
+            loadHeroSection();
+            loadStats();
+            loadAbout();
+            loadProjects();
+            loadSkills();
+            loadContactInfo();
+            loadSEO();
+            loadDesign();
+
+            // إعداد مستمعي الأحداث
+            setupEventListeners();
+        });
+
+        // تحميل قسم البطل
+        function loadHeroSection() {
+            document.getElementById('hero-title').value = siteData.hero.title;
+            document.getElementById('hero-subtitle').value = siteData.hero.subtitle;
+            document.getElementById('hero-cta-text').value = siteData.hero.ctaText;
+            document.getElementById('hero-cta-link').value = siteData.hero.ctaLink;
+        }
+
+        // تحميل الإحصائيات
+        function loadStats() {
+            const container = document.getElementById('stats-list');
+            container.innerHTML = '';
+            
+            siteData.stats.forEach(stat => {
+                const statElement = document.createElement('div');
+                statElement.className = 'sortable-item';
+                statElement.setAttribute('data-id', stat.id);
+                statElement.innerHTML = `
+                    <div>
+                        <strong>${stat.number}</strong> - ${stat.title}
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn btn-sm" onclick="editStat(${stat.id})">تعديل</button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteStat(${stat.id})">حذف</button>
+                    </div>
+                `;
+                container.appendChild(statElement);
+            });
+        }
+
+        // تحميل قسم عني
+        function loadAbout() {
+            document.getElementById('about-text').value = siteData.about.text;
+        }
+
+        // تحميل المشاريع
+        function loadProjects() {
+            const container = document.getElementById('projects-list');
+            container.innerHTML = '';
+            
+            siteData.projects.forEach(project => {
+                const projectElement = document.createElement('div');
+                projectElement.className = 'sortable-item';
+                projectElement.setAttribute('data-id', project.id);
+                projectElement.innerHTML = `
+                    <div>
+                        <strong>${project.title}</strong> - ${project.description.substring(0, 50)}...
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn btn-sm" onclick="editProject(${project.id})">تعديل</button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteProject(${project.id})">حذف</button>
+                    </div>
+                `;
+                container.appendChild(projectElement);
+            });
+        }
+
+        // تحميل المهارات
+        function loadSkills() {
+            const container = document.getElementById('skills-list');
+            container.innerHTML = '';
+            
+            siteData.skills.forEach(category => {
+                const categoryElement = document.createElement('div');
+                categoryElement.className = 'section';
+                categoryElement.innerHTML = `
+                    <div class="section-header">
+                        <h4>${category.category}</h4>
+                        <div class="item-actions">
+                            <button class="btn btn-sm" onclick="editCategory(${category.id})">تعديل الفئة</button>
+                            <button class="btn btn-sm" onclick="addSkill(${category.id})">إضافة مهارة</button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteCategory(${category.id})">حذف الفئة</button>
+                        </div>
+                    </div>
+                    <div class="skills-in-category" id="skills-category-${category.id}">
+                        ${category.items.map(item => `
+                            <div class="sortable-item" data-id="${item.id}">
+                                <div>${item.name} - ${item.level}%</div>
+                                <div class="item-actions">
+                                    <button class="btn btn-sm" onclick="editSkill(${category.id}, ${item.id})">تعديل</button>
+                                    <button class="btn btn-sm btn-danger" onclick="deleteSkill(${category.id}, ${item.id})">حذف</button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(categoryElement);
+            });
+        }
+
+        // تحميل معلومات التواصل
+        function loadContactInfo() {
+            document.getElementById('contact-email').value = siteData.contact.email;
+            document.getElementById('contact-phone').value = siteData.contact.phone;
+            document.getElementById('contact-location').value = siteData.contact.location;
+            
+            const container = document.getElementById('social-links-list');
+            container.innerHTML = '';
+            
+            siteData.contact.socialLinks.forEach(link => {
+                const linkElement = document.createElement('div');
+                linkElement.className = 'sortable-item';
+                linkElement.setAttribute('data-id', link.id);
+                linkElement.innerHTML = `
+                    <div>
+                        <i class="${link.icon}"></i> ${link.name} - ${link.url}
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn btn-sm" onclick="editSocialLink(${link.id})">تعديل</button>
+                        <button class="btn btn-sm btn-danger" onclick="deleteSocialLink(${link.id})">حذف</button>
+                    </div>
+                `;
+                container.appendChild(linkElement);
+            });
+        }
+
+        // تحميل إعدادات SEO
+        function loadSEO() {
+            document.getElementById('site-title').value = siteData.seo.title;
+            document.getElementById('site-description').value = siteData.seo.description;
+            document.getElementById('site-keywords').value = siteData.seo.keywords;
+        }
+
+        // تحميل إعدادات التصميم
+        function loadDesign() {
+            document.getElementById('primary-color').value = siteData.design.primaryColor;
+            document.getElementById('secondary-color').value = siteData.design.secondaryColor;
+            document.getElementById('accent-color').value = siteData.design.accentColor;
+            document.getElementById('text-color').value = siteData.design.textColor;
+            document.getElementById('font-family').value = siteData.design.fontFamily;
+            document.getElementById('design-style').value = siteData.design.designStyle;
+        }
+
+        // إعداد مستمعي الأحداث
+        function setupEventListeners() {
+            // التنقل بين التبويبات
+            document.querySelectorAll('.admin-nav a, .tab').forEach(element => {
+                element.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // تحديث العنوان
+                    document.getElementById('admin-page-title').textContent = this.textContent;
+                    
+                    // تحديد التبويب النشط
+                    document.querySelectorAll('.admin-nav a').forEach(a => a.classList.remove('active'));
+                    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    document.querySelector(`.tab[data-tab="${tabId}"]`).classList.add('active');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+            });
+
+            // إضافة إحصائية جديدة
+            document.getElementById('add-stat').addEventListener('click', function() {
+                const number = prompt('أدخل الرقم (مثال: 5+):');
+                if (number) {
+                    const title = prompt('أدخل العنوان (مثال: سنوات خبرة):');
+                    if (title) {
+                        const newId = Math.max(...siteData.stats.map(s => s.id), 0) + 1;
+                        siteData.stats.push({ id: newId, number, title });
+                        loadStats();
+                        alert('تمت إضافة الإحصائية بنجاح!');
+                    }
+                }
+            });
+
+            // إضافة مشروع جديد
+            document.getElementById('add-project').addEventListener('click', function() {
+                const title = prompt('أدخل عنوان المشروع:');
+                if (title) {
+                    const description = prompt('أدخل وصف المشروع:');
+                    if (description) {
+                        const tags = prompt('أدخل الوسوم (مفصولة بفاصلة):').split(',').map(tag => tag.trim());
+                        
+                        const newId = Math.max(...siteData.projects.map(p => p.id), 0) + 1;
+                        siteData.projects.push({
+                            id: newId,
+                            title,
+                            description,
+                            image: "https://via.placeholder.com/350x220",
+                            tags,
+                            link: "#",
+                            github: "#"
+                        });
+                        
+                        loadProjects();
+                        alert('تمت إضافة المشروع بنجاح!');
+                    }
+                }
+            });
+
+            // إضافة فئة مهارات جديدة
+            document.getElementById('add-category').addEventListener('click', function() {
+                const categoryName = prompt('أدخل اسم الفئة الجديدة:');
+                if (categoryName) {
+                    const newId = Math.max(...siteData.skills.map(s => s.id), 0) + 1;
+                    siteData.skills.push({
+                        id: newId,
+                        category: categoryName,
+                        items: []
+                    });
+                    
+                    loadSkills();
+                    alert('تمت إضافة الفئة بنجاح!');
+                }
+            });
+
+            // إضافة رابط تواصل اجتماعي
+            document.getElementById('add-social').addEventListener('click', function() {
+                const name = prompt('أدخل اسم المنصة (مثال: LinkedIn):');
+                if (name) {
+                    const url = prompt('أدخل الرابط:');
+                    if (url) {
+                        const icon = prompt('أدخل اسم الأيقونة (مثال: fab fa-linkedin):', "fas fa-link");
+                        
+                        const newId = Math.max(...siteData.contact.socialLinks.map(l => l.id), 0) + 1;
+                        siteData.contact.socialLinks.push({
+                            id: newId,
+                            name,
+                            url,
+                            icon: icon || "fas fa-link"
+                        });
+                        
+                        loadContactInfo();
+                        alert('تمت إضافة الرابط بنجاح!');
+                    }
+                }
+            });
+
+            // حفظ جميع التغييرات
+            document.getElementById('save-all').addEventListener('click', function() {
+                // في التطبيق الحقيقي، سيتم هنا إرسال جميع البيانات إلى الخادم
+                alert('تم حفظ جميع التغييرات بنجاح!');
+            });
+
+            // معاينة الموقع
+            document.getElementById('preview-site').addEventListener('click', function() {
+                window.open('index.html', '_blank');
+            });
+
+            // تسجيل الخروج
+            document.getElementById('logout').addEventListener('click', function() {
+                if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+                    // في التطبيق الحقيقي، سيتم هنا إجراء عملية تسجيل الخروج
+                    alert('تم تسجيل الخروج بنجاح!');
+                    // إعادة التوجيه إلى صفحة تسجيل الدخول
+                    // window.location.href = 'login.html';
+                }
+            });
+        }
+
+        // وظائف التعديل والحذف
+        function editStat(id) {
+            const stat = siteData.stats.find(s => s.id === id);
+            const newNumber = prompt('عدل الرقم:', stat.number);
+            if (newNumber) {
+                const newTitle = prompt('عدل العنوان:', stat.title);
+                if (newTitle) {
+                    stat.number = newNumber;
+                    stat.title = newTitle;
+                    loadStats();
+                    alert('تم تعديل الإحصائية بنجاح!');
+                }
+            }
+        }
+
+        function deleteStat(id) {
+            if (confirm('هل أنت متأكد من حذف هذه الإحصائية؟')) {
+                siteData.stats = siteData.stats.filter(s => s.id !== id);
+                loadStats();
+                alert('تم حذف الإحصائية بنجاح!');
+            }
+        }
+
+        function editProject(id) {
+            const project = siteData.projects.find(p => p.id === id);
+            const newTitle = prompt('عدل عنوان المشروع:', project.title);
+            if (newTitle) {
+                const newDescription = prompt('عدل وصف المشروع:', project.description);
+                if (newDescription) {
+                    const newTags = prompt('عدل الوسوم (مفصولة بفاصلة):', project.tags.join(', ')).split(',').map(tag => tag.trim());
+                    
+                    project.title = newTitle;
+                    project.description = newDescription;
+                    project.tags = newTags;
+                    
+                    loadProjects();
+                    alert('تم تعديل المشروع بنجاح!');
+                }
+            }
+        }
+
+        function deleteProject(id) {
+            if (confirm('هل أنت متأكد من حذف هذا المشروع؟')) {
+                siteData.projects = siteData.projects.filter(p => p.id !== id);
+                loadProjects();
+                alert('تم حذف المشروع بنجاح!');
+            }
+        }
+
+        function editCategory(id) {
+            const category = siteData.skills.find(c => c.id === id);
+            const newName = prompt('عدل اسم الفئة:', category.category);
+            if (newName) {
+                category.category = newName;
+                loadSkills();
+                alert('تم تعديل الفئة بنجاح!');
+            }
+        }
+
+        function deleteCategory(id) {
+            if (confirm('هل أنت متأكد من حذف هذه الفئة؟')) {
+                siteData.skills = siteData.skills.filter(c => c.id !== id);
+                loadSkills();
+                alert('تم حذف الفئة بنجاح!');
+            }
+        }
+
+        function addSkill(categoryId) {
+            const category = siteData.skills.find(c => c.id === categoryId);
+            const name = prompt('أدخل اسم المهارة:');
+            if (name) {
+                const level = parseInt(prompt('أدخل مستوى الإتقان (0-100):'));
+                if (!isNaN(level) && level >= 0 && level <= 100) {
+                    const newId = Math.max(...category.items.map(i => i.id), 0) + 1;
+                    category.items.push({ id: newId, name, level });
+                    loadSkills();
+                    alert('تمت إضافة المهارة بنجاح!');
+                }
+            }
+        }
+
+        function editSkill(categoryId, skillId) {
+            const category = siteData.skills.find(c => c.id === categoryId);
+            const skill = category.items.find(i => i.id === skillId);
+            const newName = prompt('عدل اسم المهارة:', skill.name);
+            if (newName) {
+                const newLevel = parseInt(prompt('عدل مستوى الإتقان (0-100):', skill.level));
+                if (!isNaN(newLevel) && newLevel >= 0 && newLevel <= 100) {
+                    skill.name = newName;
+                    skill.level = newLevel;
+                    loadSkills();
+                    alert('تم تعديل المهارة بنجاح!');
+                }
+            }
+        }
+
+        function deleteSkill(categoryId, skillId) {
+            if (confirm('هل أنت متأكد من حذف هذه المهارة؟')) {
+                const category = siteData.skills.find(c => c.id === categoryId);
+                category.items = category.items.filter(i => i.id !== skillId);
+                loadSkills();
+                alert('تم حذف المهارة بنجاح!');
+            }
+        }
+
+        function editSocialLink(id) {
+            const link = siteData.contact.socialLinks.find(l => l.id === id);
+            const newName = prompt('عدل اسم المنصة:', link.name);
+            if (newName) {
+                const newUrl = prompt('عدل الرابط:', link.url);
+                if (newUrl) {
+                    const newIcon = prompt('عدل اسم الأيقونة:', link.icon);
+                    
+                    link.name = newName;
+                    link.url = newUrl;
+                    link.icon = newIcon || link.icon;
+                    
+                    loadContactInfo();
+                    alert('تم تعديل الرابط بنجاح!');
+                }
+            }
+        }
+
+        function deleteSocialLink(id) {
+            if (confirm('هل أنت متأكد من حذف هذا الرابط؟')) {
+                siteData.contact.socialLinks = siteData.contact.socialLinks.filter(l => l.id !== id);
+                loadContactInfo();
+                alert('تم حذف الرابط بنجاح!');
+            }
+        }
+    </script>
+</body>
+</html>
