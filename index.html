@@ -823,6 +823,149 @@
             }
         }
 
+        /* ==================== التحسينات المضافة ==================== */
+        
+        /* زر العودة للأعلى */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* تحسين إمكانية الوصول */
+        .nav-link:focus,
+        .btn:focus,
+        .project-link:focus,
+        .social-link:focus,
+        .form-control:focus {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 3px;
+        }
+        
+        /* تحسين التحميل للصور */
+        .hero-image,
+        .project-image,
+        .about-image {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .hero-image {
+            animation-delay: 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* مؤشر الصفحة الحالية */
+        .nav-link.active {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        /* تحسين للشاشات الصغيرة جداً */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+        }
+        
+        /* تأثير رفرفة بسيط للعناصر */
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* تحسين الفورم */
+        .form-control::placeholder {
+            color: #aaa;
+        }
+        
+        /* تأثير عند التحميل */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .section {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        /* تحسين التمرير السلس */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* تحسين تأثير الظهور */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Responsive */
         @media (max-width: 992px) {
             .about-content {
@@ -880,6 +1023,11 @@
     </style>
 </head>
 <body>
+    <!-- زر العودة للأعلى -->
+    <a href="#home" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-container">
@@ -1009,7 +1157,7 @@
                             <label class="form-label">Message</label>
                             <textarea class="form-control" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" class="btn btn-primary" id="submit-btn">Send Message</button>
                     </form>
                 </div>
             </div>
@@ -1064,16 +1212,16 @@
                     image: "images/1111.jfif",
                     tags: ["React", "Node.js", "MongoDB"],
                     link: "https://janamaksoud67-beep.github.io/Razan_Flower/",
-                    github: "#"
+                    github: "https://github.com/janamaksoud67-beep/Razan_Flower"
                 },
                 {
                     id: 2,
                     title: "Task Management Application",
                     description: "A web application for Vegetables.",
-                    image: "images/vegetables.jpeg",
+                    image: "https://www2.0zz0.com/2025/12/12/22/282181692.jpeg",
                     tags: ["Vue.js", "Firebase", "CSS3"],
-                    link: "https://www2.0zz0.com/2025/12/12/22/282181692.jpeg",
-                    github: "#"
+                    link: "https://janamaksoud67-beep.github.io/sanaa_store/",
+                    github: "https://github.com/janamaksoud67-beep/sanaa_store"
                 },
                 {
                     id: 3,
@@ -1082,7 +1230,7 @@
                     image: "https://www2.0zz0.com/2025/12/12/22/199863336.jpeg",
                     tags: ["Laravel", "MySQL", "PHP"],
                     link: "https://janamaksoud67-beep.github.io/School_lesson/",
-                    github: "#"
+                    github: "https://github.com/janamaksoud67-beep/School_lesson"
                 }
             ],
             skills: [
@@ -1123,7 +1271,7 @@
                 location: "Tripoli, Lebanon",
                 socialLinks: [
                     { name: "Facebook", url: "https://www.facebook.com/mohammad.hallak.287951", icon: "fab fa-facebook" },
-                    { name: "GitHub", url: "#", icon: "fab fa-github" },
+                    { name: "GitHub", url: "https://github.com/janamaksoud67-beep", icon: "fab fa-github" },
                     { name: "Twitter", url: "https://x.com/Mohamma4893376", icon: "fab fa-twitter" },
                     { name: "Instagram", url: "https://www.instagram.com/mohammad.phallak/?hl=en", icon: "fab fa-instagram" }
                 ]
@@ -1148,6 +1296,12 @@
             
             // Setup scroll effects
             setupScrollEffects();
+            
+            // إضافة التحسينات الجديدة
+            setupBackToTop();
+            updateActiveNav();
+            optimizeImages();
+            addScrollAnimations();
         });
 
         // Load hero section
@@ -1282,10 +1436,32 @@
 
         // Setup contact form
         function setupContactForm() {
-            document.getElementById('contact-form').addEventListener('submit', function(e) {
+            const form = document.getElementById('contact-form');
+            const submitBtn = document.getElementById('submit-btn');
+            
+            form.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                alert('Your message has been sent successfully! We will contact you soon.');
-                this.reset();
+                
+                const originalText = submitBtn.textContent;
+                
+                // محاكاة الإرسال
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
+                
+                // انتظر 1.5 ثانية للمحاكاة
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                // نجاح الإرسال
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent Successfully!';
+                submitBtn.style.background = 'var(--accent-color)';
+                
+                // إعادة تعيين الفورم بعد 2 ثانية
+                setTimeout(() => {
+                    form.reset();
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = '';
+                }, 2000);
             });
         }
         
@@ -1317,6 +1493,102 @@
             
             // Observe elements to add effects when they appear
             document.querySelectorAll('.stat-item, .project-card, .skill-category').forEach(el => {
+                observer.observe(el);
+            });
+        }
+        
+        // ==================== التحسينات الجديدة ====================
+        
+        // زر العودة للأعلى
+        function setupBackToTop() {
+            const backToTop = document.getElementById('backToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTop.classList.add('active');
+                } else {
+                    backToTop.classList.remove('active');
+                }
+            });
+            
+            // تحسين التنقل السلس
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // إغلاق القائمة على الجوال
+                        const hamburger = document.querySelector('.hamburger');
+                        const navMenu = document.querySelector('.nav-menu');
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            });
+        }
+        
+        // تحديث القائمة النشطة
+        function updateActiveNav() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (window.scrollY >= (sectionTop - 150)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        }
+        
+        // تحسين الصور
+        function optimizeImages() {
+            // إضافة تحميل متأخر للصور
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                // إضافة loading lazy
+                img.loading = 'lazy';
+                
+                // إضافة alt إذا كان ناقصاً
+                if (!img.alt || img.alt === '') {
+                    img.alt = 'Mohammad Hallak Portfolio';
+                }
+            });
+        }
+        
+        // إضافة تأثيرات التمرير
+        function addScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // إضافة فئة fade-in للعناصر
+            document.querySelectorAll('.stat-item, .project-card, .skill-category').forEach(el => {
+                el.classList.add('fade-in');
                 observer.observe(el);
             });
         }
