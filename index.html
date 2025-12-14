@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammad - Professional Web Developer</title>
+    <title>Mohammad Hallak - Strategic Consultant</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #3a86ff;
-            --secondary-color: #8338ec;
-            --accent-color: #06d6a0;
-            --dark-color: #212529;
+            --primary-color: #000000;      /* Black */
+            --secondary-color: #FF6B35;    /* Vibrant Orange */
+            --accent-color: #FFA500;       /* Classic Orange */
+            --dark-color: #121212;         /* Near black */
             --light-color: #f8f9fa;
             --gray-color: #6c757d;
             --transition: all 0.3s ease;
@@ -53,6 +53,7 @@
 
         .navbar.scrolled {
             padding: 5px 0;
+            background-color: rgba(255, 255, 255, 0.98);
         }
 
         .nav-container {
@@ -99,7 +100,7 @@
         }
 
         .nav-link:hover {
-            color: var(--primary-color);
+            color: var(--secondary-color);
         }
 
         .nav-link::after {
@@ -109,11 +110,20 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--gradient);
+            background: var(--secondary-color);
             transition: var(--transition);
         }
 
         .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
             width: 100%;
         }
 
@@ -184,13 +194,15 @@
             height: 200px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid rgba(255, 255, 255, 0.2);
+            border: 5px solid rgba(255, 107, 53, 0.3);
             box-shadow: var(--card-shadow);
             transition: var(--transition);
+            background-color: white;
         }
 
         .hero-image:hover {
             transform: scale(1.05);
+            border-color: rgba(255, 107, 53, 0.6);
         }
 
         .hero-image-container::after {
@@ -201,7 +213,7 @@
             left: -10px;
             bottom: -10px;
             border-radius: 50%;
-            border: 2px dashed rgba(255, 255, 255, 0.5);
+            border: 2px dashed rgba(255, 107, 53, 0.5);
             animation: rotate 20s linear infinite;
         }
 
@@ -214,7 +226,7 @@
             font-size: 3rem;
             margin-bottom: 15px;
             font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .hero-subtitle {
@@ -229,8 +241,8 @@
         .btn {
             display: inline-block;
             padding: 12px 30px;
-            background-color: white;
-            color: var(--primary-color);
+            background-color: var(--secondary-color);
+            color: white;
             border: none;
             border-radius: 30px;
             cursor: pointer;
@@ -238,7 +250,7 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 1rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
             position: relative;
             overflow: hidden;
             z-index: 1;
@@ -251,7 +263,7 @@
             left: 0;
             width: 0;
             height: 100%;
-            background: var(--gradient);
+            background: rgba(0, 0, 0, 0.8);
             transition: var(--transition);
             z-index: -1;
         }
@@ -264,8 +276,7 @@
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            color: white;
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
         }
 
         .btn-primary {
@@ -273,8 +284,13 @@
             color: white;
         }
 
-        .btn-primary::before {
-            background: rgba(255, 255, 255, 0.2);
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
         }
 
         /* General Sections */
@@ -296,10 +312,11 @@
             content: '';
             position: absolute;
             bottom: -10px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 70px;
             height: 4px;
-            background: var(--gradient);
+            background: var(--secondary-color);
             border-radius: 2px;
         }
 
@@ -331,6 +348,7 @@
             box-shadow: var(--card-shadow);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .stat-item::before {
@@ -340,27 +358,25 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: var(--gradient);
+            background: var(--secondary-color);
         }
 
         .stat-item:hover {
             transform: translateY(-10px);
             box-shadow: var(--hover-shadow);
+            border-color: var(--secondary-color);
         }
 
         .stat-icon {
             font-size: 2.5rem;
             margin-bottom: 15px;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--secondary-color);
         }
 
         .stat-number {
             font-size: 2.5rem;
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--secondary-color);
             margin-bottom: 10px;
         }
 
@@ -403,6 +419,33 @@
             color: var(--dark-color);
         }
 
+        .about-info {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            margin-top: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--secondary-color);
+            min-width: 120px;
+        }
+
         .about-image {
             width: 100%;
             border-radius: 10px;
@@ -414,9 +457,63 @@
             transform: scale(1.02);
         }
 
+        /* Services Section */
+        .services-section {
+            background-color: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            text-align: center;
+            padding: 40px 30px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--hover-shadow);
+            border-color: var(--secondary-color);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 50%;
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .service-description {
+            color: var(--gray-color);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
         /* Projects Section */
         .projects-section {
-            background-color: white;
+            background-color: #f8f9fa;
         }
 
         .projects-grid {
@@ -432,11 +529,13 @@
             box-shadow: var(--card-shadow);
             transition: var(--transition);
             position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .project-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--hover-shadow);
+            border-color: var(--secondary-color);
         }
 
         .project-image {
@@ -484,7 +583,7 @@
         }
 
         .project-tag:hover {
-            background: var(--gradient);
+            background: var(--secondary-color);
             color: white;
         }
 
@@ -496,7 +595,7 @@
         .project-link {
             display: inline-block;
             padding: 8px 15px;
-            background-color: var(--primary-color);
+            background-color: var(--secondary-color);
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -507,13 +606,13 @@
         }
 
         .project-link:hover {
-            background-color: var(--secondary-color);
+            background-color: var(--dark-color);
             transform: translateY(-2px);
         }
 
         /* Skills Section */
         .skills-section {
-            background-color: #f8f9fa;
+            background-color: white;
         }
 
         .skills-container {
@@ -528,11 +627,13 @@
             padding: 30px;
             box-shadow: var(--card-shadow);
             transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .skill-category:hover {
             transform: translateY(-5px);
             box-shadow: var(--hover-shadow);
+            border-color: var(--secondary-color);
         }
 
         .skill-category-title {
@@ -547,7 +648,7 @@
 
         .skill-category-title i {
             margin-right: 10px;
-            color: var(--primary-color);
+            color: var(--secondary-color);
         }
 
         .skill-item {
@@ -569,7 +670,7 @@
 
         .skill-progress {
             height: 100%;
-            background: var(--gradient);
+            background: var(--secondary-color);
             border-radius: 4px;
             transition: width 1.5s ease;
             position: relative;
@@ -593,7 +694,7 @@
 
         /* Contact Section */
         .contact-section {
-            background-color: white;
+            background-color: #f8f9fa;
         }
 
         .contact-container {
@@ -603,17 +704,19 @@
         }
 
         .contact-info {
-            background-color: #f8f9fa;
+            background-color: white;
             border-radius: 10px;
             padding: 30px;
             box-shadow: var(--card-shadow);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .contact-form {
-            background-color: #f8f9fa;
+            background-color: white;
             border-radius: 10px;
             padding: 30px;
             box-shadow: var(--card-shadow);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .contact-title {
@@ -631,7 +734,7 @@
             left: 0;
             width: 40px;
             height: 3px;
-            background: var(--gradient);
+            background: var(--secondary-color);
             border-radius: 2px;
         }
 
@@ -649,13 +752,13 @@
         }
 
         .contact-detail:hover {
-            background-color: rgba(58, 134, 255, 0.05);
+            background-color: rgba(255, 107, 53, 0.05);
         }
 
         .contact-detail i {
             width: 40px;
             height: 40px;
-            background: var(--gradient);
+            background: var(--secondary-color);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -668,6 +771,7 @@
             display: flex;
             gap: 15px;
             margin-top: 20px;
+            margin-bottom: 20px;
         }
 
         .social-link {
@@ -676,7 +780,7 @@
             justify-content: center;
             width: 45px;
             height: 45px;
-            background: var(--gradient);
+            background: var(--secondary-color);
             color: white;
             border-radius: 50%;
             text-decoration: none;
@@ -707,6 +811,18 @@
             transform: translateY(-5px);
         }
 
+        .whatsapp-contact {
+            margin-top: 20px;
+        }
+
+        .whatsapp-contact .btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
         .form-group {
             margin-bottom: 20px;
             position: relative;
@@ -730,8 +846,8 @@
         }
 
         .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.2);
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
             outline: none;
         }
 
@@ -806,7 +922,7 @@
 
         .floating-element {
             position: absolute;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 107, 53, 0.1);
             border-radius: 50%;
             animation: float 15s infinite linear;
         }
@@ -823,8 +939,6 @@
             }
         }
 
-        /* ==================== التحسينات المضافة ==================== */
-        
         /* زر العودة للأعلى */
         .back-to-top {
             position: fixed;
@@ -832,7 +946,7 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            background: var(--gradient);
+            background: var(--secondary-color);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -865,7 +979,7 @@
         .project-link:focus,
         .social-link:focus,
         .form-control:focus {
-            outline: 3px solid var(--accent-color);
+            outline: 3px solid var(--secondary-color);
             outline-offset: 3px;
         }
         
@@ -884,16 +998,6 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* مؤشر الصفحة الحالية */
-        .nav-link.active {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-        
-        .nav-link.active::after {
-            width: 100%;
         }
         
         /* تحسين للشاشات الصغيرة جداً */
@@ -1008,7 +1112,7 @@
                 display: flex;
             }
 
-            .projects-grid, .skills-container {
+            .projects-grid, .services-grid, .skills-container {
                 grid-template-columns: 1fr;
             }
             
@@ -1031,10 +1135,11 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo"><i class="fas fa-code"></i>Mohammad Hallak</a>
+            <a href="#" class="logo"><i class="fas fa-user-tie"></i>Mohammad Hallak</a>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About Me</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
                 <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
                 <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
@@ -1060,8 +1165,8 @@
                 <img src="/images/profile.jpeg" alt="Profile Picture" class="hero-image" id="profile-image">
             </div>
             <h1 class="hero-title" id="hero-title">Strategic Consultant & Innovation Enthusiast</h1>
-            <p class="hero-subtitle" id="hero-subtitle">Transforming ideas into innovative digital solutions</p>
-            <a href="#projects" class="btn btn-primary" id="cta-button">Browse My Projects</a>
+            <p class="hero-subtitle" id="hero-subtitle">Transforming ideas into innovative digital solutions | Based in Lebanon, Serving Worldwide</p>
+            <a href="#contact" class="btn btn-primary" id="cta-button">Get in Touch</a>
         </div>
     </section>
 
@@ -1078,13 +1183,51 @@
     <section class="section about-section" id="about">
         <div class="container">
             <h2 class="section-title">About Me</h2>
-            <p class="section-subtitle">Learn about my professional journey and passion for technology</p>
+            <p class="section-subtitle">Get to know my professional journey, background, and expertise</p>
             <div class="about-content">
                 <div class="about-text">
-                    <p id="about-text">Web developer and UI/UX designer with over 5 years of experience. Specialized in creating interactive web applications using the latest technologies. Passionate about transforming creative ideas into tangible digital reality.</p>
-                    <a href="#" class="btn" id="cv-download">Download CV</a>
+                    <p id="about-text">I am Mohammad Hallak, a Lebanese strategic consultant and innovation enthusiast with over 5 years of experience in transforming ideas into tangible digital solutions. My passion lies at the intersection of technology and business strategy, helping organizations navigate digital transformation and innovation challenges.</p>
+                    <p>Based in Tripoli, Lebanon, I work with clients worldwide to develop innovative solutions that drive growth and efficiency. My approach combines technical expertise with strategic thinking to deliver results that matter.</p>
+                    
+                    <div class="about-info">
+                        <div class="info-item">
+                            <span class="info-label">Location:</span>
+                            <span class="info-value">Tripoli, Lebanon</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Field:</span>
+                            <span class="info-value">Strategic Consulting & Digital Innovation</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Experience:</span>
+                            <span class="info-value">5+ Years</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Languages:</span>
+                            <span class="info-value">Arabic, English, French</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Availability:</span>
+                            <span class="info-value">Available for Consulting Projects</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn" id="cv-download" style="margin-top: 20px;">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
                 </div>
                 <img src="images/me1.jpg" alt="About Me" class="about-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services-section" id="services">
+        <div class="container">
+            <h2 class="section-title">My Services</h2>
+            <p class="section-subtitle">Comprehensive services to help your business grow and innovate</p>
+            <div class="services-grid" id="services-container">
+                <!-- Services will be added dynamically -->
             </div>
         </div>
     </section>
@@ -1126,7 +1269,7 @@
                         </div>
                         <div class="contact-detail">
                             <i class="fas fa-phone"></i>
-                            <span id="contact-phone">+961 81400899</span>
+                            <span id="contact-phone">+961 81 400 899</span>
                         </div>
                         <div class="contact-detail">
                             <i class="fas fa-map-marker-alt"></i>
@@ -1136,6 +1279,12 @@
                     <h3 class="contact-title">Social Media</h3>
                     <div class="social-links" id="social-links">
                         <!-- Social links will be added dynamically -->
+                    </div>
+                    
+                    <div class="whatsapp-contact">
+                        <a href="https://wa.me/96181400899" class="btn btn-whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contact on WhatsApp
+                        </a>
                     </div>
                 </div>
                 <div class="contact-form">
@@ -1168,30 +1317,31 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <a href="#" class="logo" style="color: white; margin-bottom: 20px; display: inline-block;"><i class="fas fa-code"></i>Mohammad Hallak</a>
-                <p>Professional web developer specialized in creating innovative digital solutions</p>
+                <a href="#" class="logo" style="color: white; margin-bottom: 20px; display: inline-block;"><i class="fas fa-user-tie"></i>Mohammad Hallak</a>
+                <p>Strategic Consultant & Innovation Enthusiast | Transforming ideas into innovative digital solutions</p>
             </div>
             <div class="footer-links">
                 <a href="#home" class="footer-link">Home</a>
                 <a href="#about" class="footer-link">About</a>
+                <a href="#services" class="footer-link">Services</a>
                 <a href="#projects" class="footer-link">Projects</a>
                 <a href="#skills" class="footer-link">Skills</a>
                 <a href="#contact" class="footer-link">Contact</a>
             </div>
             <div class="copyright">
-                &copy; 2025 Mohammad Hallak. All rights reserved.
+                &copy; 2025 Mohammad Hallak. All rights reserved. | Tripoli, Lebanon
             </div>
         </div>
     </footer>
 
     <script>
-        // Site data (will be replaced with real data from dashboard)
+        // Site data
         let siteData = {
             hero: {
                 title: "Strategic Consultant & Innovation Enthusiast",
-                subtitle: "Transforming ideas into innovative digital solutions",
-                ctaText: "Browse My Projects",
-                ctaLink: "#projects",
+                subtitle: "Transforming ideas into innovative digital solutions | Based in Lebanon, Serving Worldwide",
+                ctaText: "Get in Touch",
+                ctaLink: "#contact",
                 image: "images/profile.jpeg"
             },
             stats: [
@@ -1201,23 +1351,61 @@
                 { number: "10+", title: "Awards & Recognition", icon: "fas fa-trophy" }
             ],
             about: {
-                text: "Web developer and UI/UX designer with over 5 years of experience. Specialized in creating interactive web applications using the latest technologies. Passionate about transforming creative ideas into tangible digital reality.",
+                text: "I am Mohammad Hallak, a Lebanese strategic consultant and innovation enthusiast with over 5 years of experience in transforming ideas into tangible digital solutions. My passion lies at the intersection of technology and business strategy, helping organizations navigate digital transformation and innovation challenges.",
                 cv: "cv.pdf"
             },
+            services: [
+                {
+                    id: 1,
+                    title: "Strategic Business Consulting",
+                    description: "Helping businesses develop effective strategies for growth and digital transformation.",
+                    icon: "fas fa-chart-line"
+                },
+                {
+                    id: 2,
+                    title: "Digital Transformation",
+                    description: "Guiding organizations through the process of adopting digital technologies.",
+                    icon: "fas fa-laptop-code"
+                },
+                {
+                    id: 3,
+                    title: "Innovation Workshops",
+                    description: "Facilitating creative sessions to generate innovative ideas and solutions.",
+                    icon: "fas fa-lightbulb"
+                },
+                {
+                    id: 4,
+                    title: "Web Development",
+                    description: "Building responsive and modern websites and web applications.",
+                    icon: "fas fa-code"
+                },
+                {
+                    id: 5,
+                    title: "UI/UX Design",
+                    description: "Creating intuitive and engaging user interfaces and experiences.",
+                    icon: "fas fa-paint-brush"
+                },
+                {
+                    id: 6,
+                    title: "Project Management",
+                    description: "Overseeing projects from conception to completion with agile methodologies.",
+                    icon: "fas fa-tasks"
+                }
+            ],
             projects: [
                 {
                     id: 1,
-                    title: "Interactive Learning Platform",
-                    description: "ٍFlower store online",
+                    title: "Razan Flower - Online Store",
+                    description: "A fully responsive e-commerce website for a flower shop with online ordering system.",
                     image: "images/1111.jfif",
-                    tags: ["React", "Node.js", "MongoDB"],
+                    tags: ["HTML/CSS", "JavaScript", "E-commerce"],
                     link: "https://janamaksoud67-beep.github.io/Razan_Flower/",
                     github: "https://github.com/janamaksoud67-beep/Razan_Flower"
                 },
                 {
                     id: 2,
-                    title: "Task Management Application",
-                    description: "A web application for Vegetables.",
+                    title: "Sanaa Store - Vegetable Market",
+                    description: "Web application for a vegetable store with inventory management and online ordering.",
                     image: "https://www2.0zz0.com/2025/12/12/22/282181692.jpeg",
                     tags: ["Vue.js", "Firebase", "CSS3"],
                     link: "https://janamaksoud67-beep.github.io/sanaa_store/",
@@ -1225,8 +1413,8 @@
                 },
                 {
                     id: 3,
-                    title: "School app",
-                    description: "School app for all lesson",
+                    title: "School Lesson Platform",
+                    description: "Educational platform for managing school lessons and student resources.",
                     image: "https://www2.0zz0.com/2025/12/12/22/199863336.jpeg",
                     tags: ["Laravel", "MySQL", "PHP"],
                     link: "https://janamaksoud67-beep.github.io/School_lesson/",
@@ -1235,7 +1423,17 @@
             ],
             skills: [
                 {
-                    category: "Frontend Development",
+                    category: "Strategic Consulting",
+                    icon: "fas fa-chart-line",
+                    items: [
+                        { name: "Business Strategy", level: 90 },
+                        { name: "Digital Transformation", level: 85 },
+                        { name: "Innovation Management", level: 80 },
+                        { name: "Project Management", level: 85 }
+                    ]
+                },
+                {
+                    category: "Technical Skills",
                     icon: "fas fa-code",
                     items: [
                         { name: "HTML/CSS", level: 95 },
@@ -1245,35 +1443,27 @@
                     ]
                 },
                 {
-                    category: "Backend Development",
-                    icon: "fas fa-server",
-                    items: [
-                        { name: "Node.js", level: 85 },
-                        { name: "PHP", level: 75 },
-                        { name: "Python", level: 70 },
-                        { name: "MySQL", level: 80 }
-                    ]
-                },
-                {
                     category: "Tools & Technologies",
                     icon: "fas fa-tools",
                     items: [
                         { name: "Git", level: 90 },
-                        { name: "Docker", level: 70 },
-                        { name: "AWS", level: 65 },
-                        { name: "Figma", level: 75 }
+                        { name: "Figma", level: 75 },
+                        { name: "Project Management", level: 85 },
+                        { name: "Data Analysis", level: 70 }
                     ]
                 }
             ],
             contact: {
                 email: "mhammadhallak085@gmail.com",
-                phone: "+961 81400899",
+                phone: "+961 81 400 899",
                 location: "Tripoli, Lebanon",
+                whatsapp: "https://wa.me/96181400899",
                 socialLinks: [
                     { name: "Facebook", url: "https://www.facebook.com/mohammad.hallak.287951", icon: "fab fa-facebook" },
                     { name: "GitHub", url: "https://github.com/janamaksoud67-beep", icon: "fab fa-github" },
                     { name: "Twitter", url: "https://x.com/Mohamma4893376", icon: "fab fa-twitter" },
-                    { name: "Instagram", url: "https://www.instagram.com/mohammad.phallak/?hl=en", icon: "fab fa-instagram" }
+                    { name: "Instagram", url: "https://www.instagram.com/mohammad.phallak/?hl=en", icon: "fab fa-instagram" },
+                    { name: "LinkedIn", url: "#", icon: "fab fa-linkedin" }
                 ]
             }
         };
@@ -1284,6 +1474,7 @@
             loadHeroSection();
             loadStats();
             loadAbout();
+            loadServices();
             loadProjects();
             loadSkills();
             loadContactInfo();
@@ -1297,10 +1488,16 @@
             // Setup scroll effects
             setupScrollEffects();
             
-            // إضافة التحسينات الجديدة
+            // Setup back to top button
             setupBackToTop();
+            
+            // Update active navigation
             updateActiveNav();
+            
+            // Optimize images
             optimizeImages();
+            
+            // Add scroll animations
             addScrollAnimations();
         });
 
@@ -1320,7 +1517,7 @@
             
             siteData.stats.forEach(stat => {
                 const statElement = document.createElement('div');
-                statElement.className = 'stat-item';
+                statElement.className = 'stat-item fade-in';
                 statElement.innerHTML = `
                     <i class="${stat.icon} stat-icon"></i>
                     <div class="stat-number">${stat.number}</div>
@@ -1336,6 +1533,26 @@
             document.getElementById('cv-download').href = siteData.about.cv;
         }
 
+        // Load services
+        function loadServices() {
+            const container = document.getElementById('services-container');
+            container.innerHTML = '';
+            
+            siteData.services.forEach(service => {
+                const serviceElement = document.createElement('div');
+                serviceElement.className = 'service-card fade-in';
+                serviceElement.innerHTML = `
+                    <div class="service-icon">
+                        <i class="${service.icon}"></i>
+                    </div>
+                    <h3 class="service-title">${service.title}</h3>
+                    <p class="service-description">${service.description}</p>
+                    <a href="#contact" class="btn">Learn More</a>
+                `;
+                container.appendChild(serviceElement);
+            });
+        }
+
         // Load projects
         function loadProjects() {
             const container = document.getElementById('projects-container');
@@ -1343,7 +1560,7 @@
             
             siteData.projects.forEach(project => {
                 const projectElement = document.createElement('div');
-                projectElement.className = 'project-card';
+                projectElement.className = 'project-card fade-in';
                 projectElement.innerHTML = `
                     <img src="${project.image}" alt="${project.title}" class="project-image">
                     <div class="project-content">
@@ -1353,8 +1570,8 @@
                             ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
                         </div>
                         <div class="project-links">
-                            <a href="${project.link}" class="project-link">View Project</a>
-                            <a href="${project.github}" class="project-link">Source Code</a>
+                            <a href="${project.link}" class="project-link" target="_blank">View Project</a>
+                            <a href="${project.github}" class="project-link" target="_blank">Source Code</a>
                         </div>
                     </div>
                 `;
@@ -1369,7 +1586,7 @@
             
             siteData.skills.forEach(category => {
                 const categoryElement = document.createElement('div');
-                categoryElement.className = 'skill-category';
+                categoryElement.className = 'skill-category fade-in';
                 categoryElement.innerHTML = `
                     <h3 class="skill-category-title"><i class="${category.icon}"></i>${category.category}</h3>
                     ${category.items.map(item => `
@@ -1444,18 +1661,18 @@
                 
                 const originalText = submitBtn.textContent;
                 
-                // محاكاة الإرسال
+                // Simulate sending
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
                 submitBtn.disabled = true;
                 
-                // انتظر 1.5 ثانية للمحاكاة
+                // Wait 1.5 seconds for simulation
                 await new Promise(resolve => setTimeout(resolve, 1500));
                 
-                // نجاح الإرسال
+                // Success message
                 submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent Successfully!';
-                submitBtn.style.background = 'var(--accent-color)';
+                submitBtn.style.background = 'var(--secondary-color)';
                 
-                // إعادة تعيين الفورم بعد 2 ثانية
+                // Reset form after 2 seconds
                 setTimeout(() => {
                     form.reset();
                     submitBtn.innerHTML = originalText;
@@ -1476,30 +1693,9 @@
                     navbar.classList.remove('scrolled');
                 }
             });
-            
-            // Activate animations for elements when they appear
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate');
-                    }
-                });
-            }, observerOptions);
-            
-            // Observe elements to add effects when they appear
-            document.querySelectorAll('.stat-item, .project-card, .skill-category').forEach(el => {
-                observer.observe(el);
-            });
         }
         
-        // ==================== التحسينات الجديدة ====================
-        
-        // زر العودة للأعلى
+        // Setup back to top button
         function setupBackToTop() {
             const backToTop = document.getElementById('backToTop');
             
@@ -1511,7 +1707,7 @@
                 }
             });
             
-            // تحسين التنقل السلس
+            // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const targetId = this.getAttribute('href');
@@ -1525,7 +1721,7 @@
                             behavior: 'smooth'
                         });
                         
-                        // إغلاق القائمة على الجوال
+                        // Close menu on mobile
                         const hamburger = document.querySelector('.hamburger');
                         const navMenu = document.querySelector('.nav-menu');
                         hamburger.classList.remove('active');
@@ -1535,7 +1731,7 @@
             });
         }
         
-        // تحديث القائمة النشطة
+        // Update active navigation
         function updateActiveNav() {
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.nav-link');
@@ -1561,22 +1757,22 @@
             });
         }
         
-        // تحسين الصور
+        // Optimize images
         function optimizeImages() {
-            // إضافة تحميل متأخر للصور
+            // Add lazy loading to images
             const images = document.querySelectorAll('img');
             images.forEach(img => {
-                // إضافة loading lazy
+                // Add loading lazy
                 img.loading = 'lazy';
                 
-                // إضافة alt إذا كان ناقصاً
+                // Add alt if missing
                 if (!img.alt || img.alt === '') {
                     img.alt = 'Mohammad Hallak Portfolio';
                 }
             });
         }
         
-        // إضافة تأثيرات التمرير
+        // Add scroll animations
         function addScrollAnimations() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -1586,8 +1782,8 @@
                 });
             }, { threshold: 0.1 });
             
-            // إضافة فئة fade-in للعناصر
-            document.querySelectorAll('.stat-item, .project-card, .skill-category').forEach(el => {
+            // Add fade-in class to elements
+            document.querySelectorAll('.stat-item, .service-card, .project-card, .skill-category').forEach(el => {
                 el.classList.add('fade-in');
                 observer.observe(el);
             });
