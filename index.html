@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #000000;      /* Black */
-            --secondary-color: #FF6B35;    /* Vibrant Orange */
-            --accent-color: #FFA500;       /* Classic Orange */
-            --dark-color: #121212;         /* Near black */
+            --primary-color: #1a365d;      /* Dark Blue */
+            --secondary-color: #3182ce;    /* Medium Blue */
+            --accent-color: #38b2ac;       /* Teal */
+            --dark-color: #2d3748;         /* Dark Gray */
             --light-color: #f8f9fa;
-            --gray-color: #6c757d;
+            --gray-color: #718096;
             --transition: all 0.3s ease;
             --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -194,7 +194,7 @@
             height: 200px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid rgba(255, 107, 53, 0.3);
+            border: 5px solid rgba(49, 130, 206, 0.3);
             box-shadow: var(--card-shadow);
             transition: var(--transition);
             background-color: white;
@@ -202,7 +202,7 @@
 
         .hero-image:hover {
             transform: scale(1.05);
-            border-color: rgba(255, 107, 53, 0.6);
+            border-color: rgba(49, 130, 206, 0.6);
         }
 
         .hero-image-container::after {
@@ -213,7 +213,7 @@
             left: -10px;
             bottom: -10px;
             border-radius: 50%;
-            border: 2px dashed rgba(255, 107, 53, 0.5);
+            border: 2px dashed rgba(49, 130, 206, 0.5);
             animation: rotate 20s linear infinite;
         }
 
@@ -250,7 +250,7 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 1rem;
-            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+            box-shadow: 0 5px 15px rgba(49, 130, 206, 0.3);
             position: relative;
             overflow: hidden;
             z-index: 1;
@@ -263,7 +263,7 @@
             left: 0;
             width: 0;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.2);
             transition: var(--transition);
             z-index: -1;
         }
@@ -276,7 +276,7 @@
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
+            box-shadow: 0 8px 20px rgba(49, 130, 206, 0.4);
         }
 
         .btn-primary {
@@ -494,7 +494,7 @@
             width: 80px;
             height: 80px;
             line-height: 80px;
-            background: rgba(255, 107, 53, 0.1);
+            background: rgba(49, 130, 206, 0.1);
             border-radius: 50%;
         }
 
@@ -608,6 +608,40 @@
         .project-link:hover {
             background-color: var(--dark-color);
             transform: translateY(-2px);
+        }
+
+        /* Hidden Projects */
+        .hidden-projects {
+            display: none;
+        }
+
+        .hidden-projects.active {
+            display: block;
+        }
+
+        .projects-toggle {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .toggle-btn {
+            background: transparent;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+            padding: 12px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toggle-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-3px);
         }
 
         /* Skills Section */
@@ -752,7 +786,7 @@
         }
 
         .contact-detail:hover {
-            background-color: rgba(255, 107, 53, 0.05);
+            background-color: rgba(49, 130, 206, 0.05);
         }
 
         .contact-detail i {
@@ -847,7 +881,7 @@
 
         .form-control:focus {
             border-color: var(--secondary-color);
-            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.2);
+            box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.2);
             outline: none;
         }
 
@@ -922,7 +956,7 @@
 
         .floating-element {
             position: absolute;
-            background: rgba(255, 107, 53, 0.1);
+            background: rgba(49, 130, 206, 0.1);
             border-radius: 50%;
             animation: float 15s infinite linear;
         }
@@ -1238,7 +1272,22 @@
             <h2 class="section-title">My Projects</h2>
             <p class="section-subtitle">Browse some of my previous works and projects I've implemented</p>
             <div class="projects-grid" id="projects-container">
-                <!-- Projects will be added dynamically -->
+                <!-- First 5 projects will be displayed here -->
+            </div>
+            
+            <!-- Hidden Projects Section -->
+            <div class="hidden-projects" id="hidden-projects">
+                <div class="projects-grid" id="hidden-projects-container">
+                    <!-- Remaining 15 projects will be here -->
+                </div>
+            </div>
+            
+            <!-- Toggle Button -->
+            <div class="projects-toggle">
+                <button class="toggle-btn" id="toggle-projects">
+                    <i class="fas fa-chevron-down"></i>
+                    <span>Show More Projects</span>
+                </button>
             </div>
         </div>
     </section>
@@ -1419,6 +1468,160 @@
                     tags: ["Laravel", "MySQL", "PHP"],
                     link: "https://janamaksoud67-beep.github.io/School_lesson/",
                     github: "https://github.com/janamaksoud67-beep/School_lesson"
+                },
+                {
+                    id: 4,
+                    title: "Online Clothes Store",
+                    description: "Online Clothes Store",
+                    image: "https://www2.0zz0.com/2025/12/20/00/988188785.png",
+                    tags: ["React", "D3.js", "API Integration"],
+                    link: "https://janamaksoud67-beep.github.io/Hallak_store/",
+                    github: "#"
+                },
+                {
+                    id: 5,
+                    title: "Online cv",
+                    description: "Online cv",
+                    image: "https://www2.0zz0.com/2025/12/20/00/589102044.png",
+                    tags: ["React Native", "Node.js", "Security"],
+                    link: "https://janamaksoud67-beep.github.io/Cv_online/",
+                    github: "#"
+                },
+                // Hidden Projects (16 more)
+                {
+                    id: 6,
+                    title: "Travel Planning Platform",
+                    description: "All-in-one travel planning platform with booking and itinerary features.",
+                    image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+                    tags: ["Vue.js", "Express", "MongoDB"],
+                    link: "#",
+                    github: "#"
+                },
+                {
+                    id: 7,
+                    title: "Fitness Tracking Application",
+                    description: "Comprehensive fitness tracking app with workout plans and progress monitoring.",
+                    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+                    tags: ["React Native", "Firebase", "Charts"],
+                    link: "#",
+                    github: "#"
+                },
+                {
+                    id: 8,
+                    title: "Real Estate Management System",
+                    description: "Complete system for real estate agencies to manage properties and clients.",
+                    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+                    tags: ["Laravel", "MySQL", "AWS"],
+                    link: "#",
+                    github: "#"
+                },
+                {
+                    id: 9,
+                    title: "Healthcare Appointment System",
+                    description: "Online appointment booking system for healthcare providers.",
+                    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+                    tags: ["React", "Node.js", "PostgreSQL"],
+                    link: "#",
+                    github: "#"
+                },
+                {
+                    id: 10,
+                    title: "E-learning Platform",
+                    description: "Interactive platform for online courses and learning management.",
+                    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+                    tags: ["Angular", "Django", "Stripe"],
+                    link: "#",
+                    github: "#"
+                },
+                {
+                    id: 11,
+                    title: "Inventory Management System",
+                    description: "Advanced inventory management for retail and wholesale businesses.",
+                    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+                    tags: ["Java", "Spring Boot", "MySQL"],
+                    link: "#",
+                    github: "#"
+                },
+                {
+                    id: 12,
+                    title: "Social Media Analytics Dashboard",
+                    description: "Analytics dashboard for tracking social media performance across platforms.",
+                    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+                    tags: ["React", "Chart.js", "API"],
+                    link: "#",
+                    github: "#"
+                },
+                {
+                    id: 13,
+                    title: "Food Delivery Application",
+                    description: "Full-featured food delivery app with restaurant and customer interfaces.",
+                    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+                    tags: ["Flutter", "Node.js", "MongoDB"],
+                    link: "#",
+                    github: "#"
+                },
+                {
+                    id: 14,
+                    title: "Weather Forecasting App",
+                    description: "Advanced weather forecasting application with real-time updates.",
+                    image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+                    tags: ["React", "Weather API", "Geolocation"],
+                    link: "#",
+                    github: "#"
+                },
+                {
+                    id: 15,
+                    title: "Cryptocurrency Tracker",
+                    description: "Real-time cryptocurrency price tracking and portfolio management.",
+                    image: "https://images.unsplash.com/photo-1620336655055-bd87c5d1d73f?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+                    tags: ["Vue.js", "WebSocket", "Crypto API"],
+                    link: "#",
+                    github: "#"
+                },
+                {
+                    id: 16,
+                    title: "Event Management System",
+                    description: "Complete system for organizing, promoting, and managing events.",
+                    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+                    tags: ["Laravel", "Vue.js", "Payment Gateway"],
+                    link: "#",
+                    github: "#"
+                },
+                {
+                    id: 17,
+                    title: "Hotel Booking Platform",
+                    description: "Comprehensive hotel booking system with reviews and ratings.",
+                    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+                    tags: ["Next.js", "Express", "MongoDB"],
+                    link: "#",
+                    github: "#"
+                },
+                {
+                    id: 18,
+                    title: "Job Portal Application",
+                    description: "Modern job portal connecting employers with job seekers.",
+                    image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+                    tags: ["React", "Node.js", "Elasticsearch"],
+                    link: "#",
+                    github: "#"
+                },
+                {
+                    id: 19,
+                    title: "Car Rental System",
+                    description: "Online car rental platform with booking and payment features.",
+                    image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+                    tags: ["PHP", "MySQL", "JavaScript"],
+                    link: "#",
+                    github: "#"
+                },
+                {
+                    id: 20,
+                    title: "Personal Finance Manager",
+                    description: "Application for tracking personal finances, budgets, and investments.",
+                    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+                    tags: ["React", "Redux", "Firebase"],
+                    link: "#",
+                    github: "#"
                 }
             ],
             skills: [
@@ -1499,6 +1702,9 @@
             
             // Add scroll animations
             addScrollAnimations();
+            
+            // Setup projects toggle
+            setupProjectsToggle();
         });
 
         // Load hero section
@@ -1555,27 +1761,68 @@
 
         // Load projects
         function loadProjects() {
-            const container = document.getElementById('projects-container');
-            container.innerHTML = '';
+            const visibleContainer = document.getElementById('projects-container');
+            const hiddenContainer = document.getElementById('hidden-projects-container');
             
-            siteData.projects.forEach(project => {
-                const projectElement = document.createElement('div');
-                projectElement.className = 'project-card fade-in';
-                projectElement.innerHTML = `
-                    <img src="${project.image}" alt="${project.title}" class="project-image">
-                    <div class="project-content">
-                        <h3 class="project-title">${project.title}</h3>
-                        <p class="project-description">${project.description}</p>
-                        <div class="project-tags">
-                            ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
-                        </div>
-                        <div class="project-links">
-                            <a href="${project.link}" class="project-link" target="_blank">View Project</a>
-                            <a href="${project.github}" class="project-link" target="_blank">Source Code</a>
-                        </div>
+            visibleContainer.innerHTML = '';
+            hiddenContainer.innerHTML = '';
+            
+            // Show first 5 projects
+            siteData.projects.slice(0, 5).forEach(project => {
+                const projectElement = createProjectElement(project);
+                visibleContainer.appendChild(projectElement);
+            });
+            
+            // Add remaining projects to hidden section
+            siteData.projects.slice(5).forEach(project => {
+                const projectElement = createProjectElement(project);
+                hiddenContainer.appendChild(projectElement);
+            });
+        }
+
+        // Create project element
+        function createProjectElement(project) {
+            const projectElement = document.createElement('div');
+            projectElement.className = 'project-card fade-in';
+            projectElement.innerHTML = `
+                <img src="${project.image}" alt="${project.title}" class="project-image">
+                <div class="project-content">
+                    <h3 class="project-title">${project.title}</h3>
+                    <p class="project-description">${project.description}</p>
+                    <div class="project-tags">
+                        ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
                     </div>
-                `;
-                container.appendChild(projectElement);
+                    <div class="project-links">
+                        <a href="${project.link}" class="project-link" target="_blank">View Project</a>
+                        <a href="${project.github}" class="project-link" target="_blank">Source Code</a>
+                    </div>
+                </div>
+            `;
+            return projectElement;
+        }
+
+        // Setup projects toggle
+        function setupProjectsToggle() {
+            const toggleBtn = document.getElementById('toggle-projects');
+            const hiddenProjects = document.getElementById('hidden-projects');
+            const toggleIcon = toggleBtn.querySelector('i');
+            const toggleText = toggleBtn.querySelector('span');
+            
+            toggleBtn.addEventListener('click', function() {
+                hiddenProjects.classList.toggle('active');
+                
+                if (hiddenProjects.classList.contains('active')) {
+                    toggleIcon.className = 'fas fa-chevron-up';
+                    toggleText.textContent = 'Show Less Projects';
+                    
+                    // Scroll to show more content
+                    setTimeout(() => {
+                        hiddenProjects.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 300);
+                } else {
+                    toggleIcon.className = 'fas fa-chevron-down';
+                    toggleText.textContent = 'Show More Projects';
+                }
             });
         }
 
