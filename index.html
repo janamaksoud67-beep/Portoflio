@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammad Hallak - Strategic Consultant</title>
+    <title>Mohammad Hallak - Web Designer & UI/UX Specialist</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -391,19 +391,6 @@
             position: relative;
         }
 
-        .about-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.8" d="M0,128L48,138.7C96,149,192,171,288,170.7C384,171,480,149,576,133.3C672,117,768,107,864,112C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-size: cover;
-            background-position: center;
-            z-index: 0;
-        }
-
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -432,6 +419,7 @@
             margin-bottom: 15px;
             padding-bottom: 15px;
             border-bottom: 1px solid #eee;
+            justify-content: space-between;
         }
 
         .info-item:last-child {
@@ -890,6 +878,45 @@
             resize: vertical;
         }
 
+        /* Send Options */
+        .send-options {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            margin-bottom: 20px;
+        }
+
+        .send-option {
+            flex: 1;
+            text-align: center;
+        }
+
+        .option-btn {
+            width: 100%;
+            padding: 12px;
+            background: white;
+            border: 2px solid var(--secondary-color);
+            color: var(--secondary-color);
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .option-btn.active {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .option-btn:hover {
+            background: var(--secondary-color);
+            color: white;
+        }
+
         /* Footer */
         .footer {
             background: var(--gradient);
@@ -973,7 +1000,7 @@
             }
         }
 
-        /* زر العودة للأعلى */
+        /* Back to Top Button */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -1007,7 +1034,7 @@
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
         
-        /* تحسين إمكانية الوصول */
+        /* Accessibility Improvements */
         .nav-link:focus,
         .btn:focus,
         .project-link:focus,
@@ -1017,7 +1044,7 @@
             outline-offset: 3px;
         }
         
-        /* تحسين التحميل للصور */
+        /* Image Loading Improvement */
         .hero-image,
         .project-image,
         .about-image {
@@ -1034,7 +1061,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* تحسين للشاشات الصغيرة جداً */
+        /* Extra Small Screens */
         @media (max-width: 480px) {
             .hero-title {
                 font-size: 1.8rem;
@@ -1061,17 +1088,17 @@
             }
         }
         
-        /* تأثير رفرفة بسيط للعناصر */
+        /* Floating Animation */
         .float-animation {
             animation: float 6s ease-in-out infinite;
         }
         
-        /* تحسين الفورم */
+        /* Form Improvements */
         .form-control::placeholder {
             color: #aaa;
         }
         
-        /* تأثير عند التحميل */
+        /* Loading Animation */
         @keyframes slideUp {
             from {
                 opacity: 0;
@@ -1087,12 +1114,12 @@
             animation: slideUp 0.8s ease-out;
         }
 
-        /* تحسين التمرير السلس */
+        /* Smooth Scrolling */
         html {
             scroll-behavior: smooth;
         }
 
-        /* تحسين تأثير الظهور */
+        /* Fade In Effect */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -1157,11 +1184,127 @@
             .section-title {
                 font-size: 1.8rem;
             }
+            
+            /* Mobile Specific Improvements */
+            .hero-section {
+                padding: 150px 0 70px;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
+            
+            .about-content {
+                gap: 30px;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+            
+            .contact-detail {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+            
+            .contact-detail i {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            /* Form on Mobile */
+            .form-control {
+                font-size: 16px; /* Prevent zoom in iOS */
+            }
+            
+            .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            /* Menu on Mobile */
+            .nav-link {
+                padding: 15px;
+                font-size: 1.1rem;
+            }
+            
+            /* Cards on Mobile */
+            .service-card, .project-card, .stat-item {
+                padding: 20px 15px;
+            }
+            
+            .hero-image {
+                width: 150px;
+                height: 150px;
+            }
+            
+            /* Send Options on Mobile */
+            .send-options {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .section-subtitle {
+                font-size: 0.95rem;
+            }
+            
+            /* Text Size on Small Mobile */
+            .about-text, .service-description, .project-description {
+                font-size: 0.9rem;
+            }
+            
+            /* Buttons on Small Mobile */
+            .btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+            
+            /* Gaps */
+            .services-grid, .projects-grid, .stats-container {
+                gap: 20px;
+            }
+            
+            /* Card Titles */
+            .service-title, .project-title {
+                font-size: 1.1rem;
+            }
+            
+            /* Skill Bars */
+            .skill-category {
+                padding: 20px 15px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- زر العودة للأعلى -->
+    <!-- Back to Top Button -->
     <a href="#home" class="back-to-top" id="backToTop">
         <i class="fas fa-chevron-up"></i>
     </a>
@@ -1172,7 +1315,7 @@
             <a href="#" class="logo"><i class="fas fa-user-tie"></i>Mohammad Hallak</a>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link">About Me</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
                 <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
                 <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
@@ -1196,11 +1339,14 @@
         </div>
         <div class="container hero-content">
             <div class="hero-image-container">
-                <img src="/images/profile.jpeg" alt="Profile Picture" class="hero-image" id="profile-image">
+                <img src="https://www2.0zz0.com/2025/12/29/23/369286378.jpeg" alt="Profile Picture" class="hero-image" id="profile-image">
             </div>
-            <h1 class="hero-title" id="hero-title">Strategic Consultant & Innovation Enthusiast</h1>
-            <p class="hero-subtitle" id="hero-subtitle">Transforming ideas into innovative digital solutions | Based in Lebanon, Serving Worldwide</p>
-            <a href="#contact" class="btn btn-primary" id="cta-button">Get in Touch</a>
+            <h1 class="hero-title" id="hero-title">Web Designer & UI/UX Specialist</h1>
+            <p class="hero-subtitle" id="hero-subtitle">Transforming ideas into innovative digital solutions | Based in Lebanon, serving clients worldwide</p>
+            <a href="#contact" class="btn btn-primary" id="cta-button">Contact Me</a>
+            <a href="https://wa.me/96181400899" class="btn btn-whatsapp" target="_blank" style="margin-left: 15px;">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
         </div>
     </section>
 
@@ -1217,11 +1363,11 @@
     <section class="section about-section" id="about">
         <div class="container">
             <h2 class="section-title">About Me</h2>
-            <p class="section-subtitle">Get to know my professional journey, background, and expertise</p>
+            <p class="section-subtitle">Learn about my professional journey, background, and expertise</p>
             <div class="about-content">
                 <div class="about-text">
-                    <p id="about-text">I am Mohammad Hallak, a Lebanese strategic consultant and innovation enthusiast with over 5 years of experience in transforming ideas into tangible digital solutions. My passion lies at the intersection of technology and business strategy, helping organizations navigate digital transformation and innovation challenges.</p>
-                    <p>Based in Tripoli, Lebanon, I work with clients worldwide to develop innovative solutions that drive growth and efficiency. My approach combines technical expertise with strategic thinking to deliver results that matter.</p>
+                    <p id="about-text">I am Mohammad Hallak, a Web Designer and UI/UX Specialist from Lebanon, with over 5 years of experience in transforming ideas into tangible digital solutions. My passion lies at the intersection of technology and user-centered design, where I help businesses create exceptional digital experiences.</p>
+                    <p>I have studied Web Design, UI, and UX extensively, mastering the art of creating intuitive, beautiful, and functional interfaces. Based in Tripoli, Lebanon, I work with clients worldwide to develop innovative solutions that drive growth and efficiency. My approach combines technical expertise with strategic thinking to deliver meaningful results.</p>
                     
                     <div class="about-info">
                         <div class="info-item">
@@ -1230,11 +1376,11 @@
                         </div>
                         <div class="info-item">
                             <span class="info-label">Field:</span>
-                            <span class="info-value">Strategic Consulting & Digital Innovation</span>
+                            <span class="info-value">Web Design, UI/UX Design</span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">Experience:</span>
-                            <span class="info-value">5+ Years</span>
+                            <span class="info-value">+5 years</span>
                         </div>
                         <div class="info-item">
                             <span class="info-label">Languages:</span>
@@ -1242,15 +1388,18 @@
                         </div>
                         <div class="info-item">
                             <span class="info-label">Availability:</span>
-                            <span class="info-value">Available for Consulting Projects</span>
+                            <span class="info-value">Available for design projects</span>
                         </div>
                     </div>
                     
                     <a href="#" class="btn" id="cv-download" style="margin-top: 20px;">
                         <i class="fas fa-download"></i> Download CV
                     </a>
+                    <a href="https://wa.me/96181400899" class="btn btn-whatsapp" target="_blank" style="margin-top: 20px; margin-left: 10px;">
+                        <i class="fab fa-whatsapp"></i> Contact via WhatsApp
+                    </a>
                 </div>
-                <img src="images/me1.jpg" alt="About Me" class="about-image">
+                <img src="https://www2.0zz0.com/2025/12/29/23/369286378.jpeg" alt="About Image" class="about-image">
             </div>
         </div>
     </section>
@@ -1270,7 +1419,7 @@
     <section class="section projects-section" id="projects">
         <div class="container">
             <h2 class="section-title">My Projects</h2>
-            <p class="section-subtitle">Browse some of my previous works and projects I've implemented</p>
+            <p class="section-subtitle">Browse some of my previous works and completed projects</p>
             <div class="projects-grid" id="projects-container">
                 <!-- First 5 projects will be displayed here -->
             </div>
@@ -1296,7 +1445,7 @@
     <section class="section skills-section" id="skills">
         <div class="container">
             <h2 class="section-title">My Skills</h2>
-            <p class="section-subtitle">Technical skills and expertise I possess</p>
+            <p class="section-subtitle">Technical skills and expertise that I possess</p>
             <div class="skills-container" id="skills-container">
                 <!-- Skills will be added dynamically -->
             </div>
@@ -1332,7 +1481,7 @@
                     
                     <div class="whatsapp-contact">
                         <a href="https://wa.me/96181400899" class="btn btn-whatsapp" target="_blank">
-                            <i class="fab fa-whatsapp"></i> Contact on WhatsApp
+                            <i class="fab fa-whatsapp"></i> Contact via WhatsApp
                         </a>
                     </div>
                 </div>
@@ -1341,20 +1490,35 @@
                     <form id="contact-form">
                         <div class="form-group">
                             <label class="form-label">Name</label>
-                            <input type="text" class="form-control" required>
+                            <input type="text" class="form-control" id="contact-name" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Email</label>
-                            <input type="email" class="form-control" required>
+                            <input type="email" class="form-control" id="contact-email-input" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Subject</label>
-                            <input type="text" class="form-control" required>
+                            <input type="text" class="form-control" id="contact-subject" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Message</label>
-                            <textarea class="form-control" rows="5" required></textarea>
+                            <textarea class="form-control" id="contact-message" rows="5" required></textarea>
                         </div>
+                        
+                        <!-- Send Options -->
+                        <div class="send-options">
+                            <div class="send-option">
+                                <button type="button" class="option-btn" id="email-option">
+                                    <i class="fas fa-envelope"></i> Send Email
+                                </button>
+                            </div>
+                            <div class="send-option">
+                                <button type="button" class="option-btn" id="whatsapp-option">
+                                    <i class="fab fa-whatsapp"></i> Send WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                        
                         <button type="submit" class="btn btn-primary" id="submit-btn">Send Message</button>
                     </form>
                 </div>
@@ -1367,7 +1531,7 @@
         <div class="container">
             <div class="footer-content">
                 <a href="#" class="logo" style="color: white; margin-bottom: 20px; display: inline-block;"><i class="fas fa-user-tie"></i>Mohammad Hallak</a>
-                <p>Strategic Consultant & Innovation Enthusiast | Transforming ideas into innovative digital solutions</p>
+                <p>Web Designer & UI/UX Specialist | Transforming ideas into innovative digital solutions</p>
             </div>
             <div class="footer-links">
                 <a href="#home" class="footer-link">Home</a>
@@ -1387,11 +1551,11 @@
         // Site data
         let siteData = {
             hero: {
-                title: "Strategic Consultant & Innovation Enthusiast",
-                subtitle: "Transforming ideas into innovative digital solutions | Based in Lebanon, Serving Worldwide",
-                ctaText: "Get in Touch",
+                title: "Web Designer & UI/UX Specialist",
+                subtitle: "Transforming ideas into innovative digital solutions | Based in Lebanon, serving clients worldwide",
+                ctaText: "Contact Me",
                 ctaLink: "#contact",
-                image: "images/profile.jpeg"
+                image: "https://www2.0zz0.com/2025/12/29/23/977876304.jpeg"
             },
             stats: [
                 { number: "5+", title: "Years of Experience", icon: "fas fa-award" },
@@ -1400,53 +1564,53 @@
                 { number: "10+", title: "Awards & Recognition", icon: "fas fa-trophy" }
             ],
             about: {
-                text: "I am Mohammad Hallak, a Lebanese strategic consultant and innovation enthusiast with over 5 years of experience in transforming ideas into tangible digital solutions. My passion lies at the intersection of technology and business strategy, helping organizations navigate digital transformation and innovation challenges.",
+                text: "I am Mohammad Hallak, a Web Designer and UI/UX Specialist from Lebanon, with over 5 years of experience in transforming ideas into tangible digital solutions. My passion lies at the intersection of technology and user-centered design, where I help businesses create exceptional digital experiences.",
                 cv: "cv.pdf"
             },
             services: [
                 {
                     id: 1,
-                    title: "Strategic Business Consulting",
-                    description: "Helping businesses develop effective strategies for growth and digital transformation.",
-                    icon: "fas fa-chart-line"
-                },
-                {
-                    id: 2,
-                    title: "Digital Transformation",
-                    description: "Guiding organizations through the process of adopting digital technologies.",
-                    icon: "fas fa-laptop-code"
-                },
-                {
-                    id: 3,
-                    title: "Innovation Workshops",
-                    description: "Facilitating creative sessions to generate innovative ideas and solutions.",
-                    icon: "fas fa-lightbulb"
-                },
-                {
-                    id: 4,
-                    title: "Web Development",
-                    description: "Building responsive and modern websites and web applications.",
+                    title: "Web Design & Development",
+                    description: "Creating modern, responsive websites with clean code and beautiful designs.",
                     icon: "fas fa-code"
                 },
                 {
-                    id: 5,
+                    id: 2,
                     title: "UI/UX Design",
-                    description: "Creating intuitive and engaging user interfaces and experiences.",
+                    description: "Designing intuitive user interfaces and exceptional user experiences for digital products.",
                     icon: "fas fa-paint-brush"
                 },
                 {
+                    id: 3,
+                    title: "Responsive Design",
+                    description: "Ensuring websites look and function perfectly on all devices and screen sizes.",
+                    icon: "fas fa-mobile-alt"
+                },
+                {
+                    id: 4,
+                    title: "Frontend Development",
+                    description: "Building interactive frontend applications using modern JavaScript frameworks.",
+                    icon: "fas fa-laptop-code"
+                },
+                {
+                    id: 5,
+                    title: "Website Redesign",
+                    description: "Revamping existing websites to improve performance, design, and user experience.",
+                    icon: "fas fa-redo"
+                },
+                {
                     id: 6,
-                    title: "Project Management",
-                    description: "Overseeing projects from conception to completion with agile methodologies.",
-                    icon: "fas fa-tasks"
+                    title: "Prototyping & Wireframing",
+                    description: "Creating interactive prototypes and wireframes to visualize digital products.",
+                    icon: "fas fa-pencil-ruler"
                 }
             ],
             projects: [
                 {
                     id: 1,
-                    title: "Razan Flower - Online Store",
+                    title: "Razan Flower - E-commerce Store",
                     description: "A fully responsive e-commerce website for a flower shop with online ordering system.",
-                    image: "images/1111.jfif",
+                    image: "https://www2.0zz0.com/2025/12/29/22/891246046.png",
                     tags: ["HTML/CSS", "JavaScript", "E-commerce"],
                     link: "https://janamaksoud67-beep.github.io/Razan_Flower/",
                     github: "https://github.com/janamaksoud67-beep/Razan_Flower"
@@ -1454,7 +1618,7 @@
                 {
                     id: 2,
                     title: "Sanaa Store - Vegetable Market",
-                    description: "Web application for a vegetable store with inventory management and online ordering.",
+                    description: "A web application for a vegetable store with inventory management and online ordering.",
                     image: "https://www2.0zz0.com/2025/12/12/22/282181692.jpeg",
                     tags: ["Vue.js", "Firebase", "CSS3"],
                     link: "https://janamaksoud67-beep.github.io/sanaa_store/",
@@ -1462,8 +1626,8 @@
                 },
                 {
                     id: 3,
-                    title: "School Lesson Platform",
-                    description: "Educational platform for managing school lessons and student resources.",
+                    title: "School Lessons Platform",
+                    description: "An educational platform for managing school lessons and student resources.",
                     image: "https://www2.0zz0.com/2025/12/12/22/199863336.jpeg",
                     tags: ["Laravel", "MySQL", "PHP"],
                     link: "https://janamaksoud67-beep.github.io/School_lesson/",
@@ -1471,168 +1635,51 @@
                 },
                 {
                     id: 4,
-                    title: "Online Clothes Store",
-                    description: "Online Clothes Store",
-                    image: "https://www2.0zz0.com/2025/12/20/00/988188785.png",
+                    title: "Riwayat Coffee",
+                    description: "Coffee shop",
+                    image: "https://www2.0zz0.com/2025/12/29/22/929413824.png",
                     tags: ["React", "D3.js", "API Integration"],
-                    link: "https://janamaksoud67-beep.github.io/Hallak_store/",
+                    link: "https://janamaksoud67-beep.github.io/Riwayat_Coffe/",
                     github: "#"
                 },
                 {
                     id: 5,
-                    title: "Online cv",
-                    description: "Online cv",
+                    title: "Online CV Portfolio",
+                    description: "An interactive online CV and portfolio website with modern design.",
                     image: "https://www2.0zz0.com/2025/12/20/00/589102044.png",
                     tags: ["React Native", "Node.js", "Security"],
                     link: "https://janamaksoud67-beep.github.io/Cv_online/",
                     github: "#"
                 },
-                // Hidden Projects (16 more)
+                // Hidden Projects
                 {
                     id: 6,
                     title: "Travel Planning Platform",
-                    description: "All-in-one travel planning platform with booking and itinerary features.",
-                    image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+                    description: "A comprehensive travel planning platform with booking and itinerary features.",
+                    image: "https://via.placeholder.com/350x220/1a365d/ffffff?text=Travel+Platform",
                     tags: ["Vue.js", "Express", "MongoDB"],
                     link: "#",
                     github: "#"
                 },
                 {
                     id: 7,
-                    title: "Fitness Tracking Application",
-                    description: "Comprehensive fitness tracking app with workout plans and progress monitoring.",
-                    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+                    title: "Fitness Tracking App",
+                    description: "A comprehensive fitness tracking app with workout plans and progress monitoring.",
+                    image: "https://via.placeholder.com/350x220/3182ce/ffffff?text=Fitness+App",
                     tags: ["React Native", "Firebase", "Charts"],
-                    link: "#",
-                    github: "#"
-                },
-                {
-                    id: 8,
-                    title: "Real Estate Management System",
-                    description: "Complete system for real estate agencies to manage properties and clients.",
-                    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
-                    tags: ["Laravel", "MySQL", "AWS"],
-                    link: "#",
-                    github: "#"
-                },
-                {
-                    id: 9,
-                    title: "Healthcare Appointment System",
-                    description: "Online appointment booking system for healthcare providers.",
-                    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
-                    tags: ["React", "Node.js", "PostgreSQL"],
-                    link: "#",
-                    github: "#"
-                },
-                {
-                    id: 10,
-                    title: "E-learning Platform",
-                    description: "Interactive platform for online courses and learning management.",
-                    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
-                    tags: ["Angular", "Django", "Stripe"],
-                    link: "#",
-                    github: "#"
-                },
-                {
-                    id: 11,
-                    title: "Inventory Management System",
-                    description: "Advanced inventory management for retail and wholesale businesses.",
-                    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
-                    tags: ["Java", "Spring Boot", "MySQL"],
-                    link: "#",
-                    github: "#"
-                },
-                {
-                    id: 12,
-                    title: "Social Media Analytics Dashboard",
-                    description: "Analytics dashboard for tracking social media performance across platforms.",
-                    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
-                    tags: ["React", "Chart.js", "API"],
-                    link: "#",
-                    github: "#"
-                },
-                {
-                    id: 13,
-                    title: "Food Delivery Application",
-                    description: "Full-featured food delivery app with restaurant and customer interfaces.",
-                    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
-                    tags: ["Flutter", "Node.js", "MongoDB"],
-                    link: "#",
-                    github: "#"
-                },
-                {
-                    id: 14,
-                    title: "Weather Forecasting App",
-                    description: "Advanced weather forecasting application with real-time updates.",
-                    image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
-                    tags: ["React", "Weather API", "Geolocation"],
-                    link: "#",
-                    github: "#"
-                },
-                {
-                    id: 15,
-                    title: "Cryptocurrency Tracker",
-                    description: "Real-time cryptocurrency price tracking and portfolio management.",
-                    image: "https://images.unsplash.com/photo-1620336655055-bd87c5d1d73f?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
-                    tags: ["Vue.js", "WebSocket", "Crypto API"],
-                    link: "#",
-                    github: "#"
-                },
-                {
-                    id: 16,
-                    title: "Event Management System",
-                    description: "Complete system for organizing, promoting, and managing events.",
-                    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
-                    tags: ["Laravel", "Vue.js", "Payment Gateway"],
-                    link: "#",
-                    github: "#"
-                },
-                {
-                    id: 17,
-                    title: "Hotel Booking Platform",
-                    description: "Comprehensive hotel booking system with reviews and ratings.",
-                    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
-                    tags: ["Next.js", "Express", "MongoDB"],
-                    link: "#",
-                    github: "#"
-                },
-                {
-                    id: 18,
-                    title: "Job Portal Application",
-                    description: "Modern job portal connecting employers with job seekers.",
-                    image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
-                    tags: ["React", "Node.js", "Elasticsearch"],
-                    link: "#",
-                    github: "#"
-                },
-                {
-                    id: 19,
-                    title: "Car Rental System",
-                    description: "Online car rental platform with booking and payment features.",
-                    image: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
-                    tags: ["PHP", "MySQL", "JavaScript"],
-                    link: "#",
-                    github: "#"
-                },
-                {
-                    id: 20,
-                    title: "Personal Finance Manager",
-                    description: "Application for tracking personal finances, budgets, and investments.",
-                    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
-                    tags: ["React", "Redux", "Firebase"],
                     link: "#",
                     github: "#"
                 }
             ],
             skills: [
                 {
-                    category: "Strategic Consulting",
-                    icon: "fas fa-chart-line",
+                    category: "Web Design",
+                    icon: "fas fa-paint-brush",
                     items: [
-                        { name: "Business Strategy", level: 90 },
-                        { name: "Digital Transformation", level: 85 },
-                        { name: "Innovation Management", level: 80 },
-                        { name: "Project Management", level: 85 }
+                        { name: "UI/UX Design", level: 95 },
+                        { name: "Responsive Design", level: 90 },
+                        { name: "Wireframing", level: 85 },
+                        { name: "Prototyping", level: 80 }
                     ]
                 },
                 {
@@ -1649,10 +1696,10 @@
                     category: "Tools & Technologies",
                     icon: "fas fa-tools",
                     items: [
-                        { name: "Git", level: 90 },
-                        { name: "Figma", level: 75 },
-                        { name: "Project Management", level: 85 },
-                        { name: "Data Analysis", level: 70 }
+                        { name: "Figma", level: 90 },
+                        { name: "Adobe XD", level: 85 },
+                        { name: "Git", level: 85 },
+                        { name: "VS Code", level: 95 }
                     ]
                 }
             ],
@@ -1705,6 +1752,9 @@
             
             // Setup projects toggle
             setupProjectsToggle();
+            
+            // Setup contact options
+            setupContactOptions();
         });
 
         // Load hero section
@@ -1814,11 +1864,6 @@
                 if (hiddenProjects.classList.contains('active')) {
                     toggleIcon.className = 'fas fa-chevron-up';
                     toggleText.textContent = 'Show Less Projects';
-                    
-                    // Scroll to show more content
-                    setTimeout(() => {
-                        hiddenProjects.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    }, 300);
                 } else {
                     toggleIcon.className = 'fas fa-chevron-down';
                     toggleText.textContent = 'Show More Projects';
@@ -1898,13 +1943,68 @@
             });
         }
 
+        // Setup contact options
+        function setupContactOptions() {
+            const emailOption = document.getElementById('email-option');
+            const whatsappOption = document.getElementById('whatsapp-option');
+            let selectedOption = 'email'; // Default
+            
+            emailOption.classList.add('active');
+            
+            emailOption.addEventListener('click', function() {
+                selectedOption = 'email';
+                emailOption.classList.add('active');
+                whatsappOption.classList.remove('active');
+                document.getElementById('submit-btn').innerHTML = 'Send Email';
+            });
+            
+            whatsappOption.addEventListener('click', function() {
+                selectedOption = 'whatsapp';
+                whatsappOption.classList.add('active');
+                emailOption.classList.remove('active');
+                document.getElementById('submit-btn').innerHTML = 'Send WhatsApp';
+            });
+            
+            return selectedOption;
+        }
+
         // Setup contact form
         function setupContactForm() {
             const form = document.getElementById('contact-form');
             const submitBtn = document.getElementById('submit-btn');
+            let selectedOption = 'email';
+            
+            // Set default option
+            document.getElementById('email-option').classList.add('active');
+            
+            // Email option click
+            document.getElementById('email-option').addEventListener('click', function() {
+                selectedOption = 'email';
+                document.getElementById('email-option').classList.add('active');
+                document.getElementById('whatsapp-option').classList.remove('active');
+                submitBtn.innerHTML = 'Send Email';
+            });
+            
+            // WhatsApp option click
+            document.getElementById('whatsapp-option').addEventListener('click', function() {
+                selectedOption = 'whatsapp';
+                document.getElementById('whatsapp-option').classList.add('active');
+                document.getElementById('email-option').classList.remove('active');
+                submitBtn.innerHTML = 'Send WhatsApp';
+            });
             
             form.addEventListener('submit', async function(e) {
                 e.preventDefault();
+                
+                const name = document.getElementById('contact-name').value;
+                const email = document.getElementById('contact-email-input').value;
+                const subject = document.getElementById('contact-subject').value;
+                const message = document.getElementById('contact-message').value;
+                
+                if (!name || !email || !subject || !message) {
+                    alert('Please fill in all fields');
+                    return;
+                }
                 
                 const originalText = submitBtn.textContent;
                 
@@ -1915,8 +2015,23 @@
                 // Wait 1.5 seconds for simulation
                 await new Promise(resolve => setTimeout(resolve, 1500));
                 
-                // Success message
-                submitBtn.innerHTML = '<i class="fas fa-check"></i> Sent Successfully!';
+                if (selectedOption === 'email') {
+                    // For email, we would typically send via a backend
+                    // For demo purposes, we'll simulate sending
+                    const emailBody = `Name: ${name}%0D%0AEmail: ${email}%0D%0ASubject: ${subject}%0D%0AMessage: ${message}`;
+                    window.location.href = `mailto:${siteData.contact.email}?subject=${encodeURIComponent(subject)}&body=${emailBody}`;
+                    
+                    // Success message
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Email Prepared!';
+                } else {
+                    // For WhatsApp
+                    const whatsappMessage = `Hello Mohammad,%0D%0A%0D%0AMy name is: ${name}%0D%0AEmail: ${email}%0D%0ASubject: ${subject}%0D%0AMessage: ${message}`;
+                    window.open(`https://wa.me/96181400899?text=${whatsappMessage}`, '_blank');
+                    
+                    // Success message
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> WhatsApp Opened!';
+                }
+                
                 submitBtn.style.background = 'var(--secondary-color)';
                 
                 // Reset form after 2 seconds
